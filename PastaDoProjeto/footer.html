@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Footer com Animação</title>
+
+  <!-- AOS CSS (opcional para animações) -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    /* Estilos gerais do rodapé */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #222;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .site-footer {
+      position: relative;
+      background: #111;
+      color: #fff;
+      font-size: 14px;
+      padding: 20px 0;
+      overflow: hidden;
+    }
+
+    /* Container principal do footer */
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Links do footer */
+    .footer-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+    }
+
+    .footer-nav a {
+      color: #ffffff;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-nav a:hover {
+      color: #1db954; /* cor de destaque ao passar o mouse */
+    }
+
+    /* Fundo com listras animadas */
+    .footer-bg {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image: repeating-linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.1) 0,
+        rgba(255, 255, 255, 0.05) 2px,
+        transparent 2px,
+        transparent 6px
+      );
+      background-size: 40px 40px;
+      animation: moveStripes 2s linear infinite;
+      z-index: 0;
+    }
+
+    /* Animação das listras */
+    @keyframes moveStripes {
+      0% {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: 40px 40px;
+      }
+    }
+
+    /* Responsividade */
+    @media (max-width: 600px) {
+      .footer-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <main style="padding: 2rem; text-align: center;">
+    <h1>Conteúdo do site</h1>
+    <p>Exemplo de página com rodapé animado.</p>
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer class="site-footer">
+    <div class="footer-bg"></div>
+
+    <div class="footer-container" data-aos="fade-up">
+      <p>© 2025 The Brandium - Todos os direitos reservados</p>
+
+      <nav class="footer-nav">
+        <a href="/politica-privacidade">Política de Privacidade</a>
+        <a href="/termos-uso">Termos de Uso</a>
+        <a href="/contacto">Contacto</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- AOS JS (opcional para animações) -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800, // duração padrão das animações
+      once: true     // anima apenas uma vez
+    });
+  </script>
+</body>
+</html>

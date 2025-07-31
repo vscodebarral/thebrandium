@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin - Submeter Post</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="admin.css" />
+  <style>
+    /* Reset simples */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'League Spartan', sans-serif;
+      background-color: #f9f9f9;
+      color: #222;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* HEADER */
+    .header {
+      background-color: #ff8818;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .header .logo img {
+      height: 40px;
+    }
+    .header h1 {
+      font-weight: 700;
+      font-size: 1.5rem;
+      flex-grow: 1;
+    }
+    .logout-btn {
+      background-color: #f44336;
+      border: none;
+      padding: 8px 16px;
+      color: white;
+      font-weight: 700;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .logout-btn:hover {
+      background-color: #d32f2f;
+    }
+
+    /* MAIN CONTAINER - 2 colunas */
+    .main-container {
+      flex-grow: 1;
+      display: flex;
+      max-width: 1100px;
+      margin: 30px auto;
+      gap: 40px;
+      padding: 0 20px;
+      flex-wrap: wrap;
+    }
+
+    /* FORMULÁRIO - coluna esquerda */
+    .form-section {
+      background: white;
+      border-radius: 12px;
+      padding: 30px 25px;
+      flex: 1 1 320px;
+      box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .form-section h2 {
+      margin-top: 0;
+      font-weight: 700;
+      font-size: 1.6rem;
+      margin-bottom: 20px;
+    }
+    .form-section label {
+      font-weight: 600;
+      margin-bottom: 6px;
+      display: block;
+      color: #444;
+    }
+    .form-section input[type="text"],
+    .form-section textarea,
+    .form-section input[type="file"] {
+      width: 100%;
+      padding: 10px 14px;
+      border: 2px solid #ddd;
+      border-radius: 6px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+    .form-section input[type="text"]:focus,
+    .form-section textarea:focus,
+    .form-section input[type="file"]:focus {
+      outline: none;
+      border-color: #0d47a1;
+    }
+    .form-section textarea {
+      resize: vertical;
+      font-family: 'League Spartan', sans-serif;
+    }
+    .submit-btn {
+      margin-top: 20px;
+      background-color: #ff7b17;
+      color: white;
+      font-weight: 700;
+      padding: 14px 0;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .submit-btn:disabled {
+      background-color: #7599d6;
+      cursor: not-allowed;
+    }
+    .submit-btn:hover:not(:disabled) {
+      background-color: #083974;
+    }
+    #status {
+      margin-top: 12px;
+      font-weight: 600;
+      min-height: 1.2em;
+      color: #0d47a1;
+    }
+
+    /* PREVIEW - coluna direita */
+    .preview-section {
+      flex: 1 1 350px;
+      background: white;
+      border-radius: 12px;
+      padding: 25px 20px;
+      box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      max-height: 600px;
+      overflow-y: auto;
+    }
+    .preview-section h2 {
+      font-weight: 700;
+      font-size: 1.6rem;
+      margin: 0 0 10px 0;
+      color: #fe6519;
+    }
+
+    /* MEDIA GRID */
+    #preview-media {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 12px;
+    }
+    #preview-media img,
+    #preview-media video {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+      background: #000;
+    }
+
+    /* TÍTULO E DESCRIÇÃO */
+    #preview-title {
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: #222;
+      margin: 10px 0 5px 0;
+    }
+    #preview-desc {
+      font-weight: 400;
+      font-size: 1rem;
+      color: #555;
+      line-height: 1.4;
+      white-space: pre-wrap; /* mantém quebras */
+    }
+
+    /* RESPONSIVO */
+    @media (max-width: 800px) {
+      .main-container {
+        flex-direction: column;
+      }
+      .form-section, .preview-section {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="logo">
+      <img src="https://i.ibb.co/Xfb5zwDM/tmverm.png" alt="Task Masters Logo" />
+    </div>
+    <h1>Admin Dashboard</h1>
+    <button id="logout-btn" class="logout-btn">Logout</button>
+  </header>
+
+  <!-- MAIN CONTAINER - duas colunas -->
+  <div class="main-container">
+
+    <!-- COLUNA ESQUERDA: FORMULÁRIO -->
+    <section class="form-section">
+      <h2>Submeter Post</h2>
+
+      <label for="userId">Cliente (UID)</label>
+      <input type="text" id="userId" placeholder="Cole aqui o UID do cliente" />
+
+      <label for="titulo">Título do Post</label>
+      <input type="text" id="titulo" placeholder="Ex: Post de lançamento" />
+
+      <label for="descricao">Copy do Post</label>
+      <textarea id="descricao" rows="4" placeholder="Escreva o copy do post"></textarea>
+
+      <label for="imagens">Mídia (Imagem ou Vídeo)</label>
+      <input type="file" id="imagens" accept="image/*,video/*" multiple />
+
+      <button id="submit-btn" class="submit-btn">Enviar para Aprovação</button>
+      <p id="status"></p>
+    </section>
+
+    <!-- COLUNA DIREITA: PREVIEW MODERNO -->
+    <section class="preview-section" aria-label="Preview do post">
+
+      <h2>Preview do Post</h2>
+      <div id="preview-media" aria-live="polite" aria-atomic="true">
+        <!-- Mídia preview aqui -->
+      </div>
+      <h3 id="preview-title">Título do post...</h3>
+      <p id="preview-desc">Aqui vai aparecer a legenda do post...</p>
+
+    </section>
+
+  </div>
+
+  <!-- FIREBASE + LÓGICA -->
+  <script type="module" src="admin.js"></script>
+
+</body>
+</html>

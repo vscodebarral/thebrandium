@@ -1,0 +1,458 @@
+<!-- chatbot -->
+
+<!-- BOTÃO -->
+<button id="chatbot-toggle" aria-label="Abrir chat" aria-expanded="false" title="Abrir chat" class="chatbot-btn-rectangular">
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" >
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2z"/>
+  </svg>
+</button>
+
+<style>
+  /* Botão retangular flutuante */
+  .chatbot-btn-rectangular {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 70px !important;       /* Força largura */
+    height: 50px !important;      /* Força altura para 4:5 */
+    background: #ff6a00;           /* Cor viva para destaque */
+    border: none;
+    border-radius: 15px !important; /* Bordas arredondadas suaves */
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.15s ease;
+    user-select: none;
+    z-index: 1000;
+  }
+  .chatbot-btn-rectangular:hover,
+  .chatbot-btn-rectangular:focus {
+    background-color: #e05a00;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+    outline: none;
+    transform: scale(1.05);
+  }
+  .chatbot-btn-rectangular:active {
+    transform: scale(0.95);
+  }
+  .chatbot-btn-rectangular svg {
+    stroke: #ffffff;
+    width: 24px;
+    height: 24px;
+  }
+</style>
+
+<!-- PAINEL DO CHAT -->
+<div id="chatbot-panel" aria-live="polite" aria-label="Chatbot" hidden>
+  <header>
+    <h2>Olá! Como posso ajudar?</h2>
+    <button id="chatbot-close" aria-label="Fechar chat">✖</button>
+  </header>
+  
+  <section id="chat-messages" role="log" aria-live="polite" aria-relevant="additions"></section>
+
+  <!-- Campo para mensagem livre -->
+  <div id="chat-input-container">
+    <input type="text" id="user-input" placeholder="Escreva sua pergunta..." autocomplete="off" aria-label="Campo para escrever mensagem"/>
+    <button id="send-btn" disabled aria-label="Enviar mensagem">➤</button>
+  </div>
+
+  <section id="chat-options" aria-label="Perguntas frequentes">
+    <p>Escolha uma pergunta para começar:</p>
+    <div id="options-list"></div>
+  </section>
+
+  <footer>
+    <a href="https://wa.me/+351934653292" target="_blank" rel="noopener" class="whatsapp-link" aria-label="Fale conosco no WhatsApp">
+      <img src="https://i.ibb.co/5gb73Xbc/zimgscr2-removebg-preview.png" alt="WhatsApp" style="width:30px; height:30px; vertical-align: middle; margin-right: 8px;">
+      Fale connosco no WhatsApp!
+    </a>
+  </footer>
+</div>
+
+<style>
+  /* Botão flutuante */
+  #chatbot-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: #ff6a00;
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    z-index: 1001;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    transition: background-color 0.3s ease;
+    display: none; /* Ocultado porque usamos o botão retangular */
+  }
+  #chatbot-toggle:hover {
+    background: #e05a00;
+  }
+
+  /* Painel mais compacto */
+  #chatbot-panel {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 360px;
+    max-height: 75vh;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transform-origin: bottom right;
+    transform: translateY(20px) scale(0.95);
+    pointer-events: none;
+    transition: opacity 0.3s cubic-bezier(0.4,0,0.2,1), transform 0.3s cubic-bezier(0.4,0,0.2,1);
+    font-family: 'League Spartan', sans-serif;
+    z-index: 1000;
+  }
+  #chatbot-panel.open {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+  }
+
+  /* Responsivo para mobile */
+  @media (max-width: 480px) {
+    #chatbot-panel {
+      width: 95%;
+      right: 2.5%;
+      bottom: 80px;
+      max-height: 70vh;
+    }
+  }
+
+  #chatbot-panel header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    background: #ff6a00;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    color: white;
+  }
+  #chatbot-panel header h2 {
+    margin: 0;
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+  #chatbot-close {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+  }
+  #chatbot-close:hover,
+  #chatbot-close:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #e05a00;
+    outline: none;
+  }
+
+  /* Área de mensagens */
+  #chat-messages {
+    flex: 1;
+    padding: 10px 15px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #send-btn:active {
+    transform: scale(0.9);
+    transition: transform 0.1s;
+  }
+
+  /* Bolhas de mensagem */
+  .message {
+    max-width: 80%;
+    padding: 10px 14px;
+    border-radius: 14px;
+    font-size: 0.9rem;
+    line-height: 1.3;
+    animation: fadeInUp 0.3s ease forwards;
+    white-space: pre-wrap;
+  }
+  .bot-message {
+    background: #ff6a00;
+    color: white;
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+  }
+  .user-message {
+    background: #eee;
+    color: #333;
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+  }
+
+  /* Digitação simulada */
+  #typing-indicator {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 10px;
+    max-width: 60px;
+  }
+  .dot {
+    width: 6px;
+    height: 6px;
+    background: #ff6a00;
+    border-radius: 50%;
+    animation: blink 1.4s infinite;
+  }
+  .dot:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  .dot:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+
+  @keyframes blink {
+    0%, 80%, 100% {
+      opacity: 0.3;
+    }
+    40% {
+      opacity: 1;
+    }
+  }
+
+  /* Container para input */
+  #chat-input-container {
+    display: flex;
+    gap: 8px;
+    padding: 8px 12px;
+    border-top: 1px solid #ddd;
+    background: #fafafa;
+  }
+  #chat-input-container input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  #chat-input-container input:focus {
+    outline: none;
+    border-color: #ff6a00;
+    box-shadow: 0 0 6px #ff6a00aa;
+  }
+  #chat-input-container input::placeholder {
+    transition: opacity 0.3s ease;
+  }
+  #chat-input-container input:focus::placeholder {
+    opacity: 0.5;
+  }
+
+  #chat-input-container button {
+    background: #ff6a00;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+  }
+  #chat-input-container button:disabled {
+    background: #d67c4a;
+    cursor: default;
+  }
+
+  /* Perguntas frequentes */
+  #chat-options {
+    padding: 8px 15px;
+    background: transparent;
+  }
+  #chat-options p {
+    margin: 0 0 6px 0;
+    font-weight: 400;
+    color: #666;
+    font-size: 0.85rem;
+  }
+  #options-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  #options-list button {
+    background: #ff6a00;
+    border: none;
+    border-radius: 9999px;
+    padding: 6px 14px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: transform 0.15s ease, background-color 0.3s ease;
+  }
+  #options-list button:hover:not(:disabled),
+  #options-list button:focus:not(:disabled) {
+    background-color: #e05a00;
+    transform: scale(1.05);
+    outline: none;
+  }
+  #options-list button:disabled {
+    background: #d67c4a;
+    cursor: default;
+  }
+
+  /* Footer com WhatsApp */
+  #chatbot-panel footer {
+    padding: 10px 15px;
+    border-top: 1px solid #ddd;
+    background: #ffffff;
+    text-align: center;
+  }
+  .whatsapp-link {
+    display: inline-flex;
+    align-items: center;
+    font-weight: 700;
+    color: #0f7f18;
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  .whatsapp-link:hover,
+  .whatsapp-link:focus {
+    text-decoration: underline;
+    outline: none;
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+
+<script>
+  (function() {
+    const toggleBtn = document.getElementById('chatbot-toggle');
+    const panel = document.getElementById('chatbot-panel');
+    const closeBtn = document.getElementById('chatbot-close');
+    const input = document.getElementById('user-input');
+    const sendBtn = document.getElementById('send-btn');
+    const messagesContainer = document.getElementById('chat-messages');
+    const optionsList = document.getElementById('options-list');
+
+    // Perguntas frequentes
+    const options = [
+      "Qual é o horário de funcionamento?",
+      "Como faço para agendar uma consulta?",
+      "Quais serviços vocês oferecem?",
+      "Onde vocês estão localizados?",
+      "Como posso entrar em contato?",
+    ];
+
+    // Inicializar botões de opções
+    options.forEach(option => {
+      const btn = document.createElement('button');
+      btn.textContent = option;
+      btn.type = 'button';
+      btn.addEventListener('click', () => {
+        addUserMessage(option);
+        respond(option);
+      });
+      optionsList.appendChild(btn);
+    });
+
+    // Mostrar botão retangular e esconder botão circular default (se existir)
+    document.querySelector('.chatbot-btn-rectangular').style.display = 'flex';
+
+    toggleBtn.addEventListener('click', () => {
+      const isOpen = panel.classList.toggle('open');
+      toggleBtn.setAttribute('aria-expanded', isOpen);
+      if (isOpen) {
+        input.focus();
+      }
+    });
+    closeBtn.addEventListener('click', () => {
+      panel.classList.remove('open');
+      toggleBtn.setAttribute('aria-expanded', false);
+      toggleBtn.focus();
+    });
+
+    // Habilitar botão enviar se input não vazio
+    input.addEventListener('input', () => {
+      sendBtn.disabled = input.value.trim().length === 0;
+    });
+
+    sendBtn.addEventListener('click', () => {
+      const userText = input.value.trim();
+      if (userText) {
+        addUserMessage(userText);
+        input.value = '';
+        sendBtn.disabled = true;
+        respond(userText);
+      }
+    });
+
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !sendBtn.disabled) {
+        sendBtn.click();
+      }
+    });
+
+    function addUserMessage(text) {
+      const msg = document.createElement('div');
+      msg.className = 'message user-message';
+      msg.textContent = text;
+      messagesContainer.appendChild(msg);
+      scrollToBottom();
+    }
+
+    function addBotMessage(text) {
+      const msg = document.createElement('div');
+      msg.className = 'message bot-message';
+      msg.textContent = text;
+      messagesContainer.appendChild(msg);
+      scrollToBottom();
+    }
+
+    function scrollToBottom() {
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+
+    // Simulação simples de resposta (a melhorar com IA ou API real)
+    function respond(text) {
+      // Mostrar indicador de digitação
+      const typing = document.createElement('div');
+      typing.id = 'typing-indicator';
+      typing.innerHTML = `<span class="dot"></span><span class="dot"></span><span class="dot"></span>`;
+      messagesContainer.appendChild(typing);
+      scrollToBottom();
+
+      setTimeout(() => {
+        typing.remove();
+        // Respostas fixas básicas para exemplo
+        let reply = "Desculpe, não entendi. Pode reformular?";
+        if (text.toLowerCase().includes('horário')) {
+          reply = "Nosso horário de funcionamento é das 9h às 18h, de segunda a sexta.";
+        } else if (text.toLowerCase().includes('agendar')) {
+          reply = "Para agendar uma consulta, por favor, envie-nos uma mensagem com sua disponibilidade.";
+        } else if (text.toLowerCase().includes('serviços')) {
+          reply = "Oferecemos consultas, suporte técnico e atendimento personalizado.";
+        } else if (text.toLowerCase().includes('localizados')) {
+          reply = "Estamos localizados na Rua Exemplo, 123, Centro.";
+        } else if (text.toLowerCase().includes('contato')) {
+          reply = "Você pode falar conosco pelo WhatsApp no link abaixo ou enviar um e-mail.";
+        }
+        addBotMessage(reply);
+      }, 1200);
+    }
+  })();
+</script>

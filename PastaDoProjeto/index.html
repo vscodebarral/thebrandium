@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gestor de Redes Sociais - TM</title>
+  <link rel="stylesheet" href="style.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=League+Spartan&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+</head>
+
+<div class="custom-cursor"></div>
+
+<body>
+
+  
+<!-- NAVBAR -->
+<header id="header">
+  <div class="container" style="display: flex; align-items: center; justify-content: space-between;">
+  <!-- LOGO -->
+<style>
+  .logo img {
+    display: block;
+    transition: filter 0.4s ease, transform 0.4s ease;
+  }
+  .logo:hover img {
+    filter: drop-shadow(0 0 8px rgba(255, 81, 0, 0.8)) brightness(1.2);
+    transform: scale(1.05);
+  }
+
+  .logo-tooltip {
+    position: absolute;
+    bottom: -45px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 81, 0, 0.9);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 13px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+  }
+
+  .logo:hover .logo-tooltip {
+    opacity: 1;
+    pointer-events: auto;
+  }
+</style>
+
+<div class="logo tooltip-container" style="position: relative;">
+  <a href="index.html">
+    <img
+      src="https://i.ibb.co/BKwmJnrN/The-Brandium.png"
+      alt="Logo TM"
+    />
+  </a>
+  <div class="logo-tooltip">
+    Conheça nossa história<br />
+    <a href="sobre.html" style="color: #ffd3b6; text-decoration: underline;">Sobre Nós →</a>
+  </div>
+</div>
+
+
+
+
+    
+    <!-- NAV + LOGIN -->
+    <nav style="display: flex; align-items: center; gap: 30px;">
+      <ul class="nav-links" style="display: flex; gap: 25px; margin: 0; padding: 0; list-style: none;">
+        <li><a href="marca.html">The Brandium</a></li>
+        <li><a href="servicos.html">Serviços</a></li>
+        <li><a href="portfolio.html">Portfólio</a></li>
+        <li><a href="contato.html">Contacto</a></li>
+      </ul>
+
+      <!-- BOTÃO DE LOGIN -->
+      <div class="login-btn">
+        <a href="login.html">
+          <i class="fa fa-user-circle"></i> Login
+        </a>
+      </div>
+    </nav>
+
+    <!-- HAMBURGER MOBILE -->
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</header>
+
+  <!-- HERO -->
+<head>
+  <link
+    href="https://fonts.googleapis.com/css2?family=League+Spartan&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    /* Container do banner */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100vh; /* tela cheia */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      overflow: hidden;
+      font-family: 'League Spartan', sans-serif;
+    }
+
+    /* Vídeo de fundo */
+    .hero video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      transform: translate(-50%, -50%);
+      filter: blur(4px); /* <-- controla o blur */
+      z-index: 0;
+    }
+
+    /* Camada preta semi-transparente para escurecer */
+    .video-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.589); /* <-- ajusta a opacidade */
+      z-index: 1;
+    }
+
+    /* Conteúdo */
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 90%;
+      padding: 20px;
+    }
+
+    .hero-content h1 {
+      font-weight: 700;
+      font-size: 4rem;
+      margin-bottom: 20px;
+      line-height: 1.1;
+      white-space: nowrap; /* 🔥 impede quebra de linha */
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .hero-content h1 span {
+      color: #ff6a00;
+    }
+
+    #typing-text {
+      font-size: 9rem;
+      font-weight: 700;
+      color: #ff6a00;
+      min-height: 10rem;
+      margin: 0 auto 10px;
+      white-space: nowrap;
+      letter-spacing: 2px;
+      font-family: 'Montserrat', sans-serif;
+      position: relative;
+      display: inline-block;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .hero-content p {
+      font-size: 1.4rem;
+      margin-bottom: 45px;
+    }
+
+    .btn-primary {
+      background: #ff6a00;
+      padding: 10px 28px;
+      border-radius: 30px;
+      color: white;
+      font-weight: 700;
+      font-size: 1.2rem;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+      display: inline-block;
+      letter-spacing: 1px;
+    }
+
+    .btn-primary:hover {
+      background: #e05a00;
+    }
+
+    /* Cursor piscante */
+    #typing-text::after {
+      content: '|';
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100%;
+      color: #ff6a00;
+      animation: blink-caret 1s step-start infinite;
+    }
+
+    @keyframes blink-caret {
+      0%, 50% {
+        opacity: 1;
+      }
+      51%, 100% {
+        opacity: 0;
+      }
+    }
+
+    /* 🔥 Responsividade para não quebrar em telas menores */
+    @media (max-width: 1200px) {
+      .hero-content h1 {
+        font-size: 3.5rem;
+      }
+      #typing-text {
+        font-size: 7rem;
+        min-height: 8rem;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .hero-content h1 {
+        font-size: 3rem;
+      }
+      #typing-text {
+        font-size: 6rem;
+        min-height: 7rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+      #typing-text {
+        font-size: 4.5rem;
+        min-height: 6rem;
+      }
+      .hero-content p {
+        font-size: 1.2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+      #typing-text {
+        font-size: 3rem;
+        min-height: 4rem;
+      }
+      .hero-content p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <section class="hero">
+    <!-- Vídeo de fundo -->
+    <video autoplay muted loop playsinline>
+      <source src="https://raw.githubusercontent.com/vscodebarral/videos/refs/heads/main/1118390_4k_Mystery_1280x720.mp4" type="video/mp4" />
+    </video>
+
+    <!-- Overlay escuro -->
+    <div class="video-overlay"></div>
+
+    <!-- Conteúdo -->
+    <div class="hero-content" data-aos="fade-down" data-aos-duration="1000">
+      <h1>Transformamos a sua <span>marca</span> em</h1>
+
+      <h2 id="typing-text"></h2>
+
+      <p>Marketing digital com criatividade e resultados reais.</p>
+
+      <a href="contato.html#contato" class="btn-primary">Fale comigo</a>
+    </div>
+  </section>
+
+  <script>
+    const words = [
+      'referência.',
+      'autoridade.',
+      'tendência.',
+      'inovação.',
+      'inspiração.',
+      'resultado.',
+      'relevância.'
+    ];
+    const typingText = document.getElementById('typing-text');
+
+    let wordIndex = 0;
+    let charIndex = 0;
+    const typingSpeed = 120;
+    const deletingSpeed = 60;
+    const delayBetweenWords = 2000;
+
+    function type() {
+      const currentWord = words[wordIndex];
+      if (charIndex < currentWord.length) {
+        typingText.textContent += currentWord.charAt(charIndex);
+        charIndex++;
+        setTimeout(type, typingSpeed);
+      } else {
+        setTimeout(deleteWord, delayBetweenWords);
+      }
+    }
+
+    function deleteWord() {
+      if (charIndex > 0) {
+        typingText.textContent = typingText.textContent.slice(0, -1);
+        charIndex--;
+        setTimeout(deleteWord, deletingSpeed);
+      } else {
+        wordIndex = (wordIndex + 1) % words.length;
+        setTimeout(type, typingSpeed);
+      }
+    }
+
+    // Inicia o efeito
+    type();
+  </script>
+
+<!-- SERVIÇOS -->
+<section id="servicos" 
+         class="section aos-init" 
+         data-aos="fade-up" 
+         data-aos-duration="800"
+         style="margin-bottom: -80px;"> <!-- ⬅ reduzimos o espaçamento -->
+         
+  <h2>Serviços</h2>
+  <div class="cards">
+    <div class="card aos-init" data-aos="zoom-in" data-aos-delay="0">
+      <i class="fa-solid fa-chart-line"></i>
+      <h3>Gestão Completa</h3>
+      <p>
+        Planejamento estratégico, criação e publicação de conteúdo para
+        aumentar sua presença digital.
+      </p>
+    </div>
+
+    <div class="card aos-init" data-aos="zoom-in" data-aos-delay="100">
+      <i class="fa-solid fa-camera-retro"></i>
+      <h3>Criação de Conteúdo</h3>
+      <p>
+        Produção de artes, vídeos e textos criativos para engajar seu público
+        de forma profissional.
+      </p>
+    </div>
+
+    <div class="card aos-init" data-aos="zoom-in" data-aos-delay="200">
+      <i class="fa-solid fa-lightbulb"></i>
+      <h3>Consultoria</h3>
+      <p>
+        Análise e estratégias personalizadas para potencializar seus resultados
+        online.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+  <!-- PORTFÓLIO -->
+  <section id="portfolio" class="section" data-aos="fade-up" data-aos-duration="800">
+  <h2>Portfólio</h2>
+  <div class="portfolio-grid">
+    <div class="portfolio-item project1" data-project="1" data-aos="flip-left" data-aos-delay="0">
+      <div id="particles-1" class="particles-js"></div>
+      <h3>Projeto 1</h3>
+    </div>
+    <div class="portfolio-item project2" data-project="2" data-aos="flip-left" data-aos-delay="150">
+      <div id="particles-2" class="particles-js"></div>
+      <h3>Projeto 2</h3>
+    </div>
+    <div class="portfolio-item project3" data-project="3" data-aos="flip-left" data-aos-delay="300">
+      <div id="particles-3" class="particles-js"></div>
+      <h3>Projeto 3</h3>
+    </div>
+  </div>
+</section>
+
+<!-- MODAIS (inicialmente escondidos) -->
+<div class="modal" id="modal-1">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Detalhes do Projeto 1</h2>
+    <p>Aqui você coloca uma descrição detalhada do Projeto 1, imagens, links, etc.</p>
+  </div>
+</div>
+
+<div class="modal" id="modal-2">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Detalhes do Projeto 2</h2>
+    <p>Informações mais completas do Projeto 2...</p>
+  </div>
+</div>
+
+<div class="modal" id="modal-3">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Detalhes do Projeto 3</h2>
+    <p>Descrição do Projeto 3...</p>
+  </div>
+</div>
+
+  <!-- CONTATO -->
+  <section id="contato" class="section contato" data-aos="fade-up" data-aos-duration="800">
+    <h2>Entre em Contato</h2>
+    <p>Quer impulsionar suas redes sociais? Envie uma mensagem!</p>
+    <form action="https://formspree.io/f/yourformid" method="POST">
+      <input type="text" name="name" placeholder="Seu nome" required />
+      <input type="email" name="_replyto" placeholder="Seu e-mail" required />
+      <textarea name="message" placeholder="Sua mensagem" required></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+  </section>
+
+
+
+<!-- RODAPÉ -->
+<footer style="font-family: Arial, sans-serif; font-size: 14px; color: #ffffff; padding: 20px 0; position: relative; overflow: hidden;">
+  <div class="footer-bg"></div>
+  <div class="footer-container" style="max-width: 1200px; margin: 0 auto; padding: 0 15px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; position: relative; z-index: 1;">
+    
+    <p style="margin: 0;">© 2025 TM - Todos os direitos reservados</p>
+    
+    <nav class="footer-nav" style="display: flex; flex-direction: row; gap: 1.5rem; flex-wrap: wrap; justify-content: center;">
+      <a href="sitemap.html" style="color: #ffffff; text-decoration: none;">Sitemap</a>
+      <a href="politica-privacidade.html" style="color: #ffffff; text-decoration: none;">Política de Privacidade</a>
+      <a href="termos-de-utilização.html" style="color: #ffffff; text-decoration: none;">Termos de Utilização</a>
+      <a href="#" onclick="openConsentModal()" style="color: #ffffff; ">Rever Preferências</a>
+      <a href="contato.html" style="color: #ffffff; text-decoration: none;">Contacto</a>
+    </nav>
+  </div>
+
+  <!-- CONTINUAÇÃO DO RODAPÉ -->
+<!-- MODAL DE CONSENTIMENTO -->
+<div id="cookie-modal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 9999; justify-content: center; align-items: center;">
+  <div style="background: #1b1b1b; color: #f1efe7; padding: 30px; width: 90%; max-width: 500px; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.4); font-family: 'League Spartan', sans-serif; position: relative; animation: fadeIn 0.3s ease;">
+    <h2 style="margin-top: 0; color: #ff6a00;">Preferências de Cookies</h2>
+    <p style="margin-bottom: 20px; font-size: 15px;">
+      Podemos usar cookies para personalizar e melhorar a sua experiência. Selecione as categorias que deseja permitir:
+    </p>
+
+    <form id="cookie-form" style="display: flex; flex-direction: column; gap: 16px; font-size: 14px;">
+      <label style="display: flex; gap: 10px; align-items: center;">
+        <input type="checkbox" disabled checked />
+        <span><strong>Essenciais</strong> – Necessários ao funcionamento do site</span>
+      </label>
+
+      <label style="display: flex; gap: 10px; align-items: center;">
+        <input type="checkbox" name="estatisticos" />
+        <span><strong>Estatísticos</strong> – Para análise de desempenho</span>
+      </label>
+
+      <label style="display: flex; gap: 10px; align-items: center;">
+        <input type="checkbox" name="marketing" />
+        <span><strong>Marketing</strong> – Para anúncios personalizados</span>
+      </label>
+
+      <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
+        <button type="button" onclick="closeModal()" style="padding: 10px 16px; background: #333; border: none; color: #f1efe7; border-radius: 6px;">Cancelar</button>
+        <button type="submit" style="padding: 10px 16px; background: #ff6a00; border: none; color: white; border-radius: 6px;">Guardar Preferências</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<style>
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+</style>
+
+
+
+<style>
+  .footer-bg {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: repeating-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.1) 0,
+      rgba(255, 255, 255, 0.05) 2px,
+      transparent 2px,
+      transparent 6px
+    );
+    background-size: 40px 40px;
+    animation: moveStripes 2s linear infinite;
+    z-index: 0;
+  }
+  @keyframes moveStripes {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 40px 40px;
+    }
+  }
+</style>
+
+</footer>
+
+
+
+<style>
+.site-footer {
+  background: #111;
+  color: #fff;
+  padding: 1rem 2rem;
+}
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+.footer-links a {
+  color: #ccc;
+  margin-left: 1rem;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.footer-links a:hover {
+  color: #fff;
+}
+</style>
+
+  <!-- AOS JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800,  // duração padrão das animações
+      once: true,     // animação uma vez só ao aparecer
+    });
+  </script>
+  <script src="script.js"></script>
+
+<!-- chatbot -->
+
+<!-- BOTÃO -->
+<button id="chatbot-toggle" aria-label="Abrir chat" aria-expanded="false" title="Abrir chat" class="chatbot-btn-rectangular">
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" >
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2z"/>
+  </svg>
+</button>
+
+<style>
+  /* Botão retangular flutuante */
+  .chatbot-btn-rectangular {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 70px !important;       /* Força largura */
+    height: 50px !important;      /* Força altura para 4:5 */
+    background: #ff6a00;           /* Cor viva para destaque */
+    border: none;
+    border-radius: 15px !important; /* Bordas arredondadas suaves */
+    cursor: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.15s ease;
+    user-select: none;
+    z-index: 1000;
+  }
+  .chatbot-btn-rectangular:hover,
+  .chatbot-btn-rectangular:focus {
+    background-color: #e05a00;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+    outline: none;
+    transform: scale(1.05);
+  }
+  .chatbot-btn-rectangular:active {
+    transform: scale(0.95);
+  }
+  .chatbot-btn-rectangular svg {
+    stroke: #ffffff;
+    width: 24px;
+    height: 24px;
+  }
+</style>
+
+<!-- PAINEL DO CHAT -->
+<div id="chatbot-panel" aria-live="polite" aria-label="Chatbot" hidden>
+  <header>
+    <h2>Olá! Como posso ajudar?</h2>
+    <button id="chatbot-close" aria-label="Fechar chat">✖</button>
+  </header>
+  
+  <section id="chat-messages" role="log" aria-live="polite" aria-relevant="additions"></section>
+
+  <!-- Campo para mensagem livre -->
+  <div id="chat-input-container">
+    <input type="text" id="user-input" placeholder="Escreva sua pergunta..." autocomplete="off" aria-label="Campo para escrever mensagem"/>
+    <button id="send-btn" disabled aria-label="Enviar mensagem">➤</button>
+  </div>
+
+  <section id="chat-options" aria-label="Perguntas frequentes">
+    <p>Escolha uma pergunta para começar:</p>
+    <div id="options-list"></div>
+  </section>
+
+  <footer>
+    <a href="https://wa.me/+351934653292" target="_blank" rel="noopener" class="whatsapp-link" aria-label="Fale conosco no WhatsApp">
+      <img src="https://i.ibb.co/5gb73Xbc/zimgscr2-removebg-preview.png" alt="WhatsApp" style="width:30px; height:30px; vertical-align: middle; margin-right: 8px;">
+      Fale connosco no WhatsApp!
+    </a>
+  </footer>
+</div>
+
+<style>
+  /* Botão flutuante */
+  #chatbot-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: #ff6a00;
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: none;
+    z-index: 1001;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    transition: background-color 0.3s ease;
+    display: none; /* Ocultado porque usamos o botão retangular */
+  }
+  #chatbot-toggle:hover {
+    background: #e05a00;
+  }
+
+  /* Painel mais compacto */
+  #chatbot-panel {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 360px;
+    max-height: 75vh;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transform-origin: bottom right;
+    transform: translateY(20px) scale(0.95);
+    pointer-events: none;
+    transition: opacity 0.3s cubic-bezier(0.4,0,0.2,1), transform 0.3s cubic-bezier(0.4,0,0.2,1);
+    font-family: 'League Spartan', sans-serif;
+    z-index: 1000;
+  }
+  #chatbot-panel.open {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+  }
+
+  /* Responsivo para mobile */
+  @media (max-width: 480px) {
+    #chatbot-panel {
+      width: 95%;
+      right: 2.5%;
+      bottom: 80px;
+      max-height: 70vh;
+    }
+  }
+
+  #chatbot-panel header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    background: #ff6a00;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    color: white;
+  }
+  #chatbot-panel header h2 {
+    margin: 0;
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+  #chatbot-close {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: none;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+  }
+  #chatbot-close:hover,
+  #chatbot-close:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #e05a00;
+    outline: none;
+  }
+
+  /* Área de mensagens */
+  #chat-messages {
+    flex: 1;
+    padding: 10px 15px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #send-btn:active {
+    transform: scale(0.9);
+    transition: transform 0.1s;
+  }
+
+  /* Bolhas de mensagem */
+  .message {
+    max-width: 80%;
+    padding: 10px 14px;
+    border-radius: 14px;
+    font-size: 0.9rem;
+    line-height: 1.3;
+    animation: fadeInUp 0.3s ease forwards;
+    white-space: pre-wrap;
+  }
+  .bot-message {
+    background: #ff6a00;
+    color: white;
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+  }
+  .user-message {
+    background: #eee;
+    color: #333;
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+  }
+
+  /* Digitação simulada */
+  #typing-indicator {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 10px;
+    max-width: 60px;
+  }
+  .dot {
+    width: 6px;
+    height: 6px;
+    background: #ff6a00;
+    border-radius: 50%;
+    animation: blink 1.4s infinite;
+  }
+  .dot:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  .dot:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+
+  @keyframes blink {
+    0%, 80%, 100% {
+      opacity: 0.3;
+    }
+    40% {
+      opacity: 1;
+    }
+  }
+
+  /* Container para input */
+  #chat-input-container {
+    display: flex;
+    gap: 8px;
+    padding: 8px 12px;
+    border-top: 1px solid #ddd;
+    background: #fafafa;
+  }
+  #chat-input-container input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  #chat-input-container input:focus {
+    outline: none;
+    border-color: #ff6a00;
+    box-shadow: 0 0 6px #ff6a00aa;
+  }
+  #chat-input-container input::placeholder {
+    transition: opacity 0.3s ease;
+  }
+  #chat-input-container input:focus::placeholder {
+    opacity: 0.5;
+  }
+
+  #chat-input-container button {
+    background: #ff6a00;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 10px;
+    cursor: none;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+  }
+  #chat-input-container button:disabled {
+    background: #d67c4a;
+    cursor: default;
+  }
+
+  /* Perguntas frequentes */
+  #chat-options {
+    padding: 8px 15px;
+    background: transparent;
+  }
+  #chat-options p {
+    margin: 0 0 6px 0;
+    font-weight: 400;
+    color: #666;
+    font-size: 0.85rem;
+  }
+  #options-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  #options-list button {
+    background: #ff6a00;
+    border: none;
+    border-radius: 9999px;
+    padding: 6px 14px;
+    color: white;
+    font-weight: 600;
+    cursor: none;
+    font-size: 0.85rem;
+    transition: transform 0.15s ease, background-color 0.3s ease;
+  }
+  #options-list button:hover:not(:disabled),
+  #options-list button:focus:not(:disabled) {
+    background-color: #e05a00;
+    transform: scale(1.05);
+    outline: none;
+  }
+  #options-list button:disabled {
+    background: #d67c4a;
+    cursor: default;
+  }
+
+  /* Footer com WhatsApp */
+  #chatbot-panel footer {
+    padding: 10px 15px;
+    border-top: 1px solid #ddd;
+    background: #ffffff;
+    text-align: center;
+  }
+  .whatsapp-link {
+    display: inline-flex;
+    align-items: center;
+    font-weight: 700;
+    color: #0f7f18;
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  .whatsapp-link:hover,
+  .whatsapp-link:focus {
+    text-decoration: underline;
+    outline: none;
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+
+<script>
+  (function() {
+    const toggleBtn = document.getElementById('chatbot-toggle');
+    const panel = document.getElementById('chatbot-panel');
+    const closeBtn = document.getElementById('chatbot-close');
+    const input = document.getElementById('user-input');
+    const sendBtn = document.getElementById('send-btn');
+    const messagesContainer = document.getElementById('chat-messages');
+    const optionsList = document.getElementById('options-list');
+
+    // Perguntas frequentes
+    const options = [
+      "Qual é o horário de funcionamento?",
+      "Como faço para agendar uma consulta?",
+      "Quais serviços vocês oferecem?",
+      "Onde vocês estão localizados?",
+      "Como posso entrar em contato?",
+    ];
+
+    // Inicializar botões de opções
+    options.forEach(option => {
+      const btn = document.createElement('button');
+      btn.textContent = option;
+      btn.type = 'button';
+      btn.addEventListener('click', () => {
+        addUserMessage(option);
+        respond(option);
+      });
+      optionsList.appendChild(btn);
+    });
+
+    // Mostrar botão retangular e esconder botão circular default (se existir)
+    document.querySelector('.chatbot-btn-rectangular').style.display = 'flex';
+
+    toggleBtn.addEventListener('click', () => {
+      const isOpen = panel.classList.toggle('open');
+      toggleBtn.setAttribute('aria-expanded', isOpen);
+      if (isOpen) {
+        input.focus();
+      }
+    });
+    closeBtn.addEventListener('click', () => {
+      panel.classList.remove('open');
+      toggleBtn.setAttribute('aria-expanded', false);
+      toggleBtn.focus();
+    });
+
+    // Habilitar botão enviar se input não vazio
+    input.addEventListener('input', () => {
+      sendBtn.disabled = input.value.trim().length === 0;
+    });
+
+    sendBtn.addEventListener('click', () => {
+      const userText = input.value.trim();
+      if (userText) {
+        addUserMessage(userText);
+        input.value = '';
+        sendBtn.disabled = true;
+        respond(userText);
+      }
+    });
+
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !sendBtn.disabled) {
+        sendBtn.click();
+      }
+    });
+
+    function addUserMessage(text) {
+      const msg = document.createElement('div');
+      msg.className = 'message user-message';
+      msg.textContent = text;
+      messagesContainer.appendChild(msg);
+      scrollToBottom();
+    }
+
+    function addBotMessage(text) {
+      const msg = document.createElement('div');
+      msg.className = 'message bot-message';
+      msg.textContent = text;
+      messagesContainer.appendChild(msg);
+      scrollToBottom();
+    }
+
+    function scrollToBottom() {
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+
+    // Simulação simples de resposta (a melhorar com IA ou API real)
+    function respond(text) {
+      // Mostrar indicador de digitação
+      const typing = document.createElement('div');
+      typing.id = 'typing-indicator';
+      typing.innerHTML = `<span class="dot"></span><span class="dot"></span><span class="dot"></span>`;
+      messagesContainer.appendChild(typing);
+      scrollToBottom();
+
+      setTimeout(() => {
+        typing.remove();
+        // Respostas fixas básicas para exemplo
+        let reply = "Desculpe, não entendi. Pode reformular?";
+        if (text.toLowerCase().includes('horário')) {
+          reply = "Nosso horário de funcionamento é das 9h às 18h, de segunda a sexta.";
+        } else if (text.toLowerCase().includes('agendar')) {
+          reply = "Para agendar uma consulta, por favor, envie-nos uma mensagem com sua disponibilidade.";
+        } else if (text.toLowerCase().includes('serviços')) {
+          reply = "Oferecemos consultas, suporte técnico e atendimento personalizado.";
+        } else if (text.toLowerCase().includes('localizados')) {
+          reply = "Estamos localizados na Rua Exemplo, 123, Centro.";
+        } else if (text.toLowerCase().includes('contato')) {
+          reply = "Você pode falar conosco pelo WhatsApp no link abaixo ou enviar um e-mail.";
+        }
+        addBotMessage(reply);
+      }, 1200);
+    }
+  })();
+</script>
+<!-- chatbot -->
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const currentPage = window.location.pathname.split("/").pop(); // ex: "servicos.html"
+    const links = document.querySelectorAll(".nav-link");
+
+    links.forEach(link => {
+      const linkPage = link.getAttribute("href");
+
+      // Se a URL do link for igual à página atual OU é index.html na home
+      if (linkPage === currentPage || 
+          (currentPage === "" && linkPage === "index.html")) {
+        link.classList.add("active");
+      }
+    });
+  });
+</script>
+
+
+<div id="cookie-banner" class="cookie-banner">
+  <div class="cookie-box">
+    <p><strong>Este site utiliza cookies</strong> para melhorar a sua experiência. Pode aceitar todos ou gerir as suas preferências.</p>
+    <div class="cookie-actions">
+      <button id="acceptAll">Aceitar todos</button>
+      <button id="rejectAll">Rejeitar</button>
+      <button id="togglePrefs">Gerir preferências</button>
+    </div>
+
+    <div id="cookie-preferences" class="cookie-preferences hidden">
+      <form>
+        <label><input type="checkbox" checked disabled /> Estritamente necessários</label>
+        <label><input type="checkbox" id="analytics" /> Cookies analíticos</label>
+        <label><input type="checkbox" id="marketing" /> Cookies de marketing</label>
+        <label><input type="checkbox" id="functional" /> Cookies funcionais</label>
+      </form>
+      <button id="savePrefs">Guardar preferências</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const banner = document.getElementById("cookie-banner");
+  const prefs = document.getElementById("cookie-preferences");
+  const acceptAll = document.getElementById("acceptAll");
+  const rejectAll = document.getElementById("rejectAll");
+  const togglePrefs = document.getElementById("togglePrefs");
+  const savePrefs = document.getElementById("savePrefs");
+
+  window.addEventListener("DOMContentLoaded", () => {
+try {
+  const consent = JSON.parse(localStorage.getItem("cookieConsent"));
+  if (!consent || Object.keys(consent).length === 0) {
+    banner.style.display = "block";
+  } else {
+    banner.style.display = "none";
+  }
+} catch (e) {
+  banner.style.display = "block";
+}
+  });
+
+  togglePrefs.addEventListener("click", () => {
+    prefs.classList.toggle("hidden");
+  });
+
+  acceptAll.addEventListener("click", () => {
+    localStorage.setItem("cookieConsent", JSON.stringify({
+      analytics: true,
+      marketing: true,
+      functional: true
+    }));
+    banner.style.display = "none";
+  });
+
+  rejectAll.addEventListener("click", () => {
+    localStorage.setItem("cookieConsent", JSON.stringify({
+      analytics: false,
+      marketing: false,
+      functional: false
+    }));
+    banner.style.display = "none";
+  });
+
+  savePrefs.addEventListener("click", () => {
+    const consent = {
+      analytics: document.getElementById("analytics").checked,
+      marketing: document.getElementById("marketing").checked,
+      functional: document.getElementById("functional").checked
+    };
+    localStorage.setItem("cookieConsent", JSON.stringify(consent));
+    banner.style.display = "none";
+  });
+</script>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script src="script.js"></script> <!-- seu arquivo JS que inicializa as partículas -->
+</html>

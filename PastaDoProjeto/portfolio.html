@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfólio - TM</title>
+
+  <!-- Estilos principais -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Fontes -->
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan&display=swap" rel="stylesheet" />
+
+  <!-- Ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'League Spartan', sans-serif;
+      padding-top: 60px;
+      background: #fff;
+      color: #222;
+    }
+
+    /* Header fixo */
+    header#header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #163647;
+      z-index: 999;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* Estilo ao rolar */
+    #header.scrolled {
+      background: #16364067;
+      backdrop-filter: blur(5px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    /* Banner panorâmico */
+    .banner-panorama {
+      position: relative;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 33vh;
+      min-height: 250px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .banner-panorama video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: translate(-50%, -50%);
+      filter: blur(4px);
+      z-index: 0;
+    }
+
+    .banner-panorama .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 1;
+    }
+
+    .banner-panorama h2 {
+      position: relative;
+      z-index: 2;
+      color: #ff6a00;
+      font-size: 3rem;
+      font-weight: 700;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+
+    /* Carrosséis */
+    .carousel-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      padding: 40px 0;
+      background: none;
+    }
+
+    .carousel-wrapper {
+      position: relative;
+      width: 1350px;
+      height: 460px;
+      overflow: hidden;
+    }
+
+    .shift-right { transform: translateX(25px); }
+    .shift-left  { transform: translateX(-25px); }
+
+    .carousel-track {
+      display: flex;
+      gap: 30px;
+      animation: scroll-left 40s linear infinite;
+    }
+
+    .carousel-track.scroll-right {
+      animation: scroll-right 40s linear infinite;
+    }
+
+    .carousel-track img {
+      flex-shrink: 0;
+      width: 430px;
+      height: 430px;
+      object-fit: cover;
+      border-radius: 18px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+    }
+
+    @keyframes scroll-left {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    @keyframes scroll-right {
+      0% { transform: translateX(-50%); }
+      100% { transform: translateX(0); }
+    }
+
+    .carousel-wrapper::before,
+    .carousel-wrapper::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 150px;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .carousel-wrapper::before {
+      left: 0;
+      background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+    }
+
+    .carousel-wrapper::after {
+      right: 0;
+      background: linear-gradient(to left, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px 0;
+      background: #000000;
+    }
+
+    .custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  background-color: #ff6a00;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: transform 0.15s ease;
+  z-index: 9999;
+}
+
+.custom-cursor.hover {
+  transform: scale(1.5) translate(-50%, -50%);
+}
+
+
+  </style>
+</head>
+
+<body>
+  <!-- HEADER FIXO -->
+  <header id="header">
+    <div class="container" style="display: flex; align-items: center; justify-content: space-between;">
+      <div class="logo">
+        <a href="index.html">
+          <img src="https://i.ibb.co/BKwmJnrN/The-Brandium.png" alt="Logo TM" />
+        </a>
+      </div>
+      <nav style="display: flex; align-items: center; gap: 30px;">
+        <ul class="nav-links" style="display: flex; gap: 25px; margin: 0; padding: 0; list-style: none;">
+          <li><a href="marca.html">The Brandium</a></li>
+          <li><a href="servicos.html">Serviços</a></li>
+          <li><a href="portfolio.html">Portfólio</a></li>
+          <li><a href="contato.html">Contacto</a></li>
+        </ul>
+        <div class="login-btn">
+          <a href="login.html">
+            <i class="fa fa-user-circle"></i> Login
+          </a>
+        </div>
+      </nav>
+      <div class="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- BANNER -->
+  <section class="banner-panorama">
+    <video autoplay muted loop playsinline>
+      <source src="https://raw.githubusercontent.com/vscodebarral/videos/refs/heads/main/0_Abstract_Art_Abstract_Background_1280x720.mp4" type="video/mp4">
+    </video>
+    <div class="overlay"></div>
+    <h2>Portfólio</h2>
+  </section>
+  
+<section class="carousel-section">
+  <!-- CARROSSEL 1 -->
+  <div class="carousel-row normal fade-in-section">
+    <div class="carousel-text">
+      <h2 class="shine" style="color: #ff6a00;">Projetos Visuais</h2>
+      <p style="color: #163640;">Design, cor e movimento aplicados em múltiplos formatos criativos.</p>
+    </div>
+    <div class="carousel-container">
+      <div class="carousel-track scroll-left">
+        <img src="https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=800&q=80" alt="Projeto 1" />
+        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80" alt="Projeto 2" />
+        <img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7?w=800&q=80" alt="Projeto 3" />
+        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80" alt="Projeto 4" />
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80" alt="Projeto 5" />
+        <img src="https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=800&q=80" alt="Projeto 1 dup" />
+        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80" alt="Projeto 2 dup" />
+      </div>
+      <div class="carousel-fade left"></div>
+      <div class="carousel-fade right"></div>
+    </div>
+  </div>
+
+  <!-- CARROSSEL 2 -->
+  <div class="carousel-row reversed fade-in-section">
+    <div class="carousel-text">
+      <h2 class="shine" style="color: #ff6a00;">Identidade & Marca</h2>
+      <p style="color: #163640;">Conceitos gráficos e marcas com personalidade visual forte.</p>
+    </div>
+    <div class="carousel-container">
+      <div class="carousel-track scroll-right">
+        <img src="https://images.unsplash.com/photo-1581091215360-59ab6b98d1a1?w=800&q=80" alt="Projeto 6" />
+        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80" alt="Projeto 7" />
+        <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&q=80" alt="Projeto 8" />
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80" alt="Projeto 9" />
+        <img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?w=800&q=80" alt="Projeto 10" />
+        <img src="https://images.unsplash.com/photo-1581091215360-59ab6b98d1a1?w=800&q=80" alt="Projeto 6 dup" />
+        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80" alt="Projeto 7 dup" />
+      </div>
+      <div class="carousel-fade left"></div>
+      <div class="carousel-fade right"></div>
+    </div>
+  </div>
+
+  <!-- CARROSSEL 3 -->
+  <div class="carousel-row normal fade-in-section">
+    <div class="carousel-text">
+      <h2 class="shine" style="color: #ff6a00;">Projetos Diversos</h2>
+      <p style="color: #163640;">Uma mistura eclética de criatividade e experimentação visual.</p>
+    </div>
+    <div class="carousel-container">
+      <div class="carousel-track scroll-left">
+        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&q=80" alt="Projeto 11" />
+        <img src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=800&q=80" alt="Projeto 12" />
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80" alt="Projeto 13" />
+        <img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7?w=800&q=80" alt="Projeto 14" />
+        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80" alt="Projeto 15" />
+        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&q=80" alt="Projeto 11 dup" />
+        <img src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=800&q=80" alt="Projeto 12 dup" />
+      </div>
+      <div class="carousel-fade left"></div>
+      <div class="carousel-fade right"></div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="cta-budget">
+  <div class="cta-wrapper">
+    <h3>Interessado num projeto <span class="highlight-orange">personalizado</span>?</h3>
+    <a href="contato.html" class="btn-cta">Solicitar orçamento</a>
+  </div>
+</section>
+
+
+
+
+<section class="processo-metodologia fade-in-section">
+  <div class="container-processo">
+    <h2 class="processo-titulo">Nosso Processo</h2>
+    <p class="processo-subtitulo">Como transformamos ideias em soluções visuais impactantes.</p>
+
+    <div class="processo-etapas-refinadas">
+      <div class="etapa-refinada">
+        <span class="icone"><i class="fa-solid fa-pen-nib"></i></span>
+        <h3>Briefing</h3>
+        <p>Coletamos todas as informações e alinhamos expectativas com o cliente.</p>
+      </div>
+      <div class="etapa-refinada">
+        <span class="icone"><i class="fa-solid fa-magnifying-glass-chart"></i></span>
+        <h3>Pesquisa</h3>
+        <p>Estudo de mercado, público-alvo e referências criativas relevantes.</p>
+      </div>
+      <div class="etapa-refinada">
+        <span class="icone"><i class="fa-solid fa-bezier-curve"></i></span>
+        <h3>Design</h3>
+        <p>Desenvolvimento visual com foco em estética, função e originalidade.</p>
+      </div>
+      <div class="etapa-refinada">
+        <span class="icone"><i class="fa-solid fa-code-branch"></i></span>
+        <h3>Prototipagem</h3>
+        <p>Testamos e refinamos as ideias para garantir clareza e performance.</p>
+      </div>
+      <div class="etapa-refinada">
+        <span class="icone"><i class="fa-solid fa-paper-plane"></i></span>
+        <h3>Entrega</h3>
+        <p>Apresentamos o projeto final com qualidade técnica e visual superior.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<!-- RODAPÉ -->
+<footer style="font-family: Arial, sans-serif; font-size: 14px; color: #ffffff; padding: 20px 0; position: relative; overflow: hidden;">
+  <div class="footer-bg"></div>
+  <div class="footer-container" style="max-width: 1200px; margin: 0 auto; padding: 0 15px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; position: relative; z-index: 1;">
+    
+    <p style="margin: 0;">© 2025 TM - Todos os direitos reservados</p>
+    
+    <nav class="footer-nav" style="display: flex; flex-direction: row; gap: 1.5rem; flex-wrap: wrap; justify-content: center;">
+      <a href="/politica-privacidade" style="color: #ffffff; text-decoration: none;">Política de Privacidade</a>
+      <a href="/termos-uso" style="color: #ffffff; text-decoration: none;">Termos de Uso</a>
+      <a href="/contacto" style="color: #ffffff; text-decoration: none;">Contacto</a>
+    </nav>
+  
+  </div>
+
+<style>
+  .footer-bg {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: repeating-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.1) 0,
+      rgba(255, 255, 255, 0.05) 2px,
+      transparent 2px,
+      transparent 6px
+    );
+    background-size: 40px 40px;
+    animation: moveStripes 2s linear infinite;
+    z-index: 0;
+  }
+  @keyframes moveStripes {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 40px 40px;
+    }
+  }
+
+
+
+.carousel-section {
+  width: 100%;
+  padding: 60px 0;
+  background: #f8f8f8;
+}
+
+.carousel-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 0 10px;
+  gap: 40px;
+  position: relative;
+}
+
+.carousel-row.reversed {
+  flex-direction: row-reverse;
+}
+
+.carousel-text {
+  flex: 1;
+  max-width: 400px;
+}
+
+.carousel-text h2 {
+  color: #ff6a00;
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+.carousel-text p {
+  color: #163640;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.carousel-container {
+  flex: 2;
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+  height: 220px;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 16px;
+  height: 100%;
+  animation: scroll-left 50s linear infinite;
+}
+
+.carousel-track img {
+  height: 100%;
+  width: auto;
+  flex-shrink: 0;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.scroll-left {
+  animation-name: scroll-left;
+}
+
+.scroll-right {
+  animation-name: scroll-right;
+}
+
+@keyframes scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes scroll-right {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+/* FADES */
+.carousel-fade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.carousel-fade.left {
+  left: 0;
+  background: linear-gradient(to right, #f8f8f8 0%, transparent 100%);
+}
+
+.carousel-fade.right {
+  right: 0;
+  background: linear-gradient(to left, #f8f8f8 0%, transparent 100%);
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .carousel-row {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .carousel-row.reversed {
+    flex-direction: column;
+  }
+
+  .carousel-text {
+    max-width: 100%;
+  }
+
+  .carousel-container {
+    height: 160px;
+  }
+
+  .carousel-fade {
+    width: 40px;
+  }
+
+  .carousel-track img {
+    height: 100%;
+  }
+}
+
+.carousel-track img {
+  transition: transform 0.8s ease;
+}
+.carousel-track img:hover {
+  transform: scale(1.03);
+}
+
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease-out;
+}
+
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+
+
+
+
+.processo-metodologia {
+  padding: 100px 20px;
+  background: #fdfdfd;
+  text-align: center;
+}
+
+.container-processo {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.processo-titulo {
+  font-size: 2.8rem;
+  color: #163640;
+  font-weight: 600;
+  margin-bottom: 15px;
+  letter-spacing: -0.5px;
+}
+
+.processo-subtitulo {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 60px;
+  max-width: 700px;
+  margin-inline: auto;
+}
+
+.processo-etapas-refinadas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 40px;
+  justify-items: center;
+}
+
+.etapa-refinada {
+  background: #fff;
+  padding: 40px 30px;
+  border-radius: 16px;
+  box-shadow: 0 12px 24px rgba(0,0,0,0.05);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.etapa-refinada.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.etapa-refinada:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 30px rgba(0,0,0,0.08);
+}
+
+.etapa-refinada h3 {
+  font-size: 1.2rem;
+  color: #163640;
+  margin: 20px 0 10px;
+  font-weight: 600;
+}
+
+.etapa-refinada p {
+  font-size: 0.95rem;
+  color: #444;
+  line-height: 1.5;
+}
+
+.etapa-refinada .icone {
+  font-size: 30px;
+  color: #ff6a00;
+}
+
+.cta-budget {
+  background-color: #f5f5f5;
+  padding: 40px 20px 80px;
+  text-align: center;
+}
+
+.cta-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.cta-wrapper h3 {
+  font-size: 2rem;
+  color: #163640;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+.btn-cta {
+  display: inline-block;
+  padding: 16px 36px;
+  background-color: #ff6a00;
+  color: white;
+  font-size: 1.1rem;
+  border-radius: 40px;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-cta:hover {
+  background-color: #e55d00;
+  transform: translateY(-2px);
+}
+
+
+.highlight-orange {
+  color: #ff6a00;
+  font-weight: 700;
+}
+
+
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const elements = document.querySelectorAll(".fade-in-section");
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    elements.forEach(el => observer.observe(el));
+  });
+</script>
+
+
+</footer>
+
+  <!-- Cursor -->
+  <div class="custom-cursor"></div>
+
+  <!-- Scripts -->
+  <script>
+    // Menu responsivo
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+      hamburger.classList.toggle('active');
+    });
+
+    // Cursor customizado
+    const cursor = document.querySelector(".custom-cursor");
+    window.addEventListener("mousemove", (e) => {
+      cursor.style.top = `${e.clientY}px`;
+      cursor.style.left = `${e.clientX}px`;
+    });
+
+    const clickableSelectors = "a, button, .carousel-item";
+    document.querySelectorAll(clickableSelectors).forEach(el => {
+      el.addEventListener("mouseenter", () => cursor.classList.add("hover"));
+      el.addEventListener("mouseleave", () => cursor.classList.remove("hover"));
+    });
+
+    // Header com fundo ao rolar
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 10);
+    });
+  </script>
+
+
+
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+
+  document.querySelectorAll('.fade-in-section, .etapa-refinada').forEach(el => observer.observe(el));
+</script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
+
+
+<!-- chatbot -->
+
+<!-- BOTÃO -->
+<button id="chatbot-toggle" aria-label="Abrir chat" aria-expanded="false" title="Abrir chat" class="chatbot-btn-rectangular">
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" >
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2z"/>
+  </svg>
+</button>
+
+<style>
+  /* Botão retangular flutuante */
+  .chatbot-btn-rectangular {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 70px !important;       /* Força largura */
+    height: 50px !important;      /* Força altura para 4:5 */
+    background: #ff6a00;           /* Cor viva para destaque */
+    border: none;
+    border-radius: 15px !important; /* Bordas arredondadas suaves */
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.15s ease;
+    user-select: none;
+    z-index: 1000;
+  }
+  .chatbot-btn-rectangular:hover,
+  .chatbot-btn-rectangular:focus {
+    background-color: #e05a00;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+    outline: none;
+    transform: scale(1.05);
+  }
+  .chatbot-btn-rectangular:active {
+    transform: scale(0.95);
+  }
+  .chatbot-btn-rectangular svg {
+    stroke: #ffffff;
+    width: 24px;
+    height: 24px;
+  }
+</style>
+
+<!-- PAINEL DO CHAT -->
+<div id="chatbot-panel" aria-live="polite" aria-label="Chatbot" hidden>
+  <header>
+    <h2>Olá! Como posso ajudar?</h2>
+    <button id="chatbot-close" aria-label="Fechar chat">✖</button>
+  </header>
+  
+  <section id="chat-messages" role="log" aria-live="polite" aria-relevant="additions"></section>
+
+  <!-- Campo para mensagem livre -->
+  <div id="chat-input-container">
+    <input type="text" id="user-input" placeholder="Escreva sua pergunta..." autocomplete="off" aria-label="Campo para escrever mensagem"/>
+    <button id="send-btn" disabled aria-label="Enviar mensagem">➤</button>
+  </div>
+
+  <section id="chat-options" aria-label="Perguntas frequentes">
+    <p>Escolha uma pergunta para começar:</p>
+    <div id="options-list"></div>
+  </section>
+
+  <footer>
+    <a href="https://wa.me/+351934653292" target="_blank" rel="noopener" class="whatsapp-link" aria-label="Fale conosco no WhatsApp">
+      <img src="https://i.ibb.co/5gb73Xbc/zimgscr2-removebg-preview.png" alt="WhatsApp" style="width:30px; height:30px; vertical-align: middle; margin-right: 8px;">
+      Fale connosco no WhatsApp!
+    </a>
+  </footer>
+</div>
+
+<style>
+  /* Botão flutuante */
+  #chatbot-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: #ff6a00;
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    z-index: 1001;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    transition: background-color 0.3s ease;
+    display: none; /* Ocultado porque usamos o botão retangular */
+  }
+  #chatbot-toggle:hover {
+    background: #e05a00;
+  }
+
+  /* Painel mais compacto */
+  #chatbot-panel {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 360px;
+    max-height: 75vh;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transform-origin: bottom right;
+    transform: translateY(20px) scale(0.95);
+    pointer-events: none;
+    transition: opacity 0.3s cubic-bezier(0.4,0,0.2,1), transform 0.3s cubic-bezier(0.4,0,0.2,1);
+    font-family: 'League Spartan', sans-serif;
+    z-index: 1000;
+  }
+  #chatbot-panel.open {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+  }
+
+  /* Responsivo para mobile */
+  @media (max-width: 480px) {
+    #chatbot-panel {
+      width: 95%;
+      right: 2.5%;
+      bottom: 80px;
+      max-height: 70vh;
+    }
+  }
+
+  #chatbot-panel header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    background: #ff6a00;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    color: white;
+  }
+  #chatbot-panel header h2 {
+    margin: 0;
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+  #chatbot-close {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+  }
+  #chatbot-close:hover,
+  #chatbot-close:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #e05a00;
+    outline: none;
+  }
+
+  /* Área de mensagens */
+  #chat-messages {
+    flex: 1;
+    padding: 10px 15px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #send-btn:active {
+    transform: scale(0.9);
+    transition: transform 0.1s;
+  }
+
+  /* Bolhas de mensagem */
+  .message {
+    max-width: 80%;
+    padding: 10px 14px;
+    border-radius: 14px;
+    font-size: 0.9rem;
+    line-height: 1.3;
+    animation: fadeInUp 0.3s ease forwards;
+    white-space: pre-wrap;
+  }
+  .bot-message {
+    background: #ff6a00;
+    color: white;
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+  }
+  .user-message {
+    background: #eee;
+    color: #333;
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+  }
+
+  /* Digitação simulada */
+  #typing-indicator {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 10px;
+    max-width: 60px;
+  }
+  .dot {
+    width: 6px;
+    height: 6px;
+    background: #ff6a00;
+    border-radius: 50%;
+    animation: blink 1.4s infinite;
+  }
+  .dot:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  .dot:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+
+  @keyframes blink {
+    0%, 80%, 100% {
+      opacity: 0.3;
+    }
+    40% {
+      opacity: 1;
+    }
+  }
+
+  /* Container para input */
+  #chat-input-container {
+    display: flex;
+    gap: 8px;
+    padding: 8px 12px;
+    border-top: 1px solid #ddd;
+    background: #fafafa;
+  }
+  #chat-input-container input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  #chat-input-container input:focus {
+    outline: none;
+    border-color: #ff6a00;
+    box-shadow: 0 0 6px #ff6a00aa;
+  }
+  #chat-input-container input::placeholder {
+    transition: opacity 0.3s ease;
+  }
+  #chat-input-container input:focus::placeholder {
+    opacity: 0.5;
+  }
+
+  #chat-input-container button {
+    background: #ff6a00;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+  }
+  #chat-input-container button:disabled {
+    background: #d67c4a;
+    cursor: default;
+  }
+
+  /* Perguntas frequentes */
+  #chat-options {
+    padding: 8px 15px;
+    background: transparent;
+  }
+  #chat-options p {
+    margin: 0 0 6px 0;
+    font-weight: 400;
+    color: #666;
+    font-size: 0.85rem;
+  }
+  #options-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  #options-list button {
+    background: #ff6a00;
+    border: none;
+    border-radius: 9999px;
+    padding: 6px 14px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: transform 0.15s ease, background-color 0.3s ease;
+  }
+  #options-list button:hover:not(:disabled),
+  #options-list button:focus:not(:disabled) {
+    background-color: #e05a00;
+    transform: scale(1.05);
+    outline: none;
+  }
+  #options-list button:disabled {
+    background: #d67c4a;
+    cursor: default;
+  }
+
+  /* Footer com WhatsApp */
+  #chatbot-panel footer {
+    padding: 10px 15px;
+    border-top: 1px solid #ddd;
+    background: #ffffff;
+    text-align: center;
+  }
+  .whatsapp-link {
+    display: inline-flex;
+    align-items: center;
+    font-weight: 700;
+    color: #0f7f18;
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  .whatsapp-link:hover,
+  .whatsapp-link:focus {
+    text-decoration: underline;
+    outline: none;
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+</style>
+
+<script>
+  (function() {
+    const toggleBtn = document.getElementById('chatbot-toggle');
+    const panel = document.getElementById('chatbot-panel');
+    const closeBtn = document.getElementById('chatbot-close');
+    const input = document.getElementById('user-input');
+    const sendBtn = document.getElementById('send-btn');
+    const messagesContainer = document.getElementById('chat-messages');
+    const optionsList = document.getElementById('options-list');
+
+    // Perguntas frequentes
+    const options = [
+      "Qual é o horário de funcionamento?",
+      "Como faço para agendar uma consulta?",
+      "Quais serviços vocês oferecem?",
+      "Onde vocês estão localizados?",
+      "Como posso entrar em contato?",
+    ];
+
+    // Inicializar botões de opções
+    options.forEach(option => {
+      const btn = document.createElement('button');
+      btn.textContent = option;
+      btn.type = 'button';
+      btn.addEventListener('click', () => {
+        addUserMessage(option);
+        respond(option);
+      });
+      optionsList.appendChild(btn);
+    });
+
+    // Mostrar botão retangular e esconder botão circular default (se existir)
+    document.querySelector('.chatbot-btn-rectangular').style.display = 'flex';
+
+    toggleBtn.addEventListener('click', () => {
+      const isOpen = panel.classList.toggle('open');
+      toggleBtn.setAttribute('aria-expanded', isOpen);
+      if (isOpen) {
+        input.focus();
+      }
+    });
+    closeBtn.addEventListener('click', () => {
+      panel.classList.remove('open');
+      toggleBtn.setAttribute('aria-expanded', false);
+      toggleBtn.focus();
+    });
+
+    // Habilitar botão enviar se input não vazio
+    input.addEventListener('input', () => {
+      sendBtn.disabled = input.value.trim().length === 0;
+    });
+
+    sendBtn.addEventListener('click', () => {
+      const userText = input.value.trim();
+      if (userText) {
+        addUserMessage(userText);
+        input.value = '';
+        sendBtn.disabled = true;
+        respond(userText);
+      }
+    });
+
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !sendBtn.disabled) {
+        sendBtn.click();
+      }
+    });
+
+    function addUserMessage(text) {
+      const msg = document.createElement('div');
+      msg.className = 'message user-message';
+      msg.textContent = text;
+      messagesContainer.appendChild(msg);
+      scrollToBottom();
+    }
+
+    function addBotMessage(text) {
+      const msg = document.createElement('div');
+      msg.className = 'message bot-message';
+      msg.textContent = text;
+      messagesContainer.appendChild(msg);
+      scrollToBottom();
+    }
+
+    function scrollToBottom() {
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+
+    // Simulação simples de resposta (a melhorar com IA ou API real)
+    function respond(text) {
+      // Mostrar indicador de digitação
+      const typing = document.createElement('div');
+      typing.id = 'typing-indicator';
+      typing.innerHTML = `<span class="dot"></span><span class="dot"></span><span class="dot"></span>`;
+      messagesContainer.appendChild(typing);
+      scrollToBottom();
+
+      setTimeout(() => {
+        typing.remove();
+        // Respostas fixas básicas para exemplo
+        let reply = "Desculpe, não entendi. Pode reformular?";
+        if (text.toLowerCase().includes('horário')) {
+          reply = "Nosso horário de funcionamento é das 9h às 18h, de segunda a sexta.";
+        } else if (text.toLowerCase().includes('agendar')) {
+          reply = "Para agendar uma consulta, por favor, envie-nos uma mensagem com sua disponibilidade.";
+        } else if (text.toLowerCase().includes('serviços')) {
+          reply = "Oferecemos consultas, suporte técnico e atendimento personalizado.";
+        } else if (text.toLowerCase().includes('localizados')) {
+          reply = "Estamos localizados na Rua Exemplo, 123, Centro.";
+        } else if (text.toLowerCase().includes('contato')) {
+          reply = "Você pode falar conosco pelo WhatsApp no link abaixo ou enviar um e-mail.";
+        }
+        addBotMessage(reply);
+      }, 1200);
+    }
+  })();
+</script>
+<!-- chatbot -->
+
+<script>
+  // Pega o nome da página atual (ex: 'servicos.html', 'portfolio.html')
+  const currentPage = window.location.pathname.split("/").pop();
+
+  // Percorre todos os links da navbar
+  document.querySelectorAll(".nav-links a").forEach(link => {
+    // Compara o href do link com a página atual
+    if (link.getAttribute("href") === currentPage) {
+      link.classList.add("active"); // adiciona a classe que cria o underline
+    }
+  });
+</script>
+
+</body>
+</html>

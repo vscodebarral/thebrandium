@@ -1,0 +1,173 @@
+body {
+  font-family: "Poppins", sans-serif;
+  position: relative; /* necessário para o ::before */
+  background: url('https://i.ibb.co/8DVj504W/ztmoriginal.png') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  color: #fff;
+  overflow: hidden;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.451); /* camada preta com 40% de opacidade */
+  pointer-events: none; /* para não interferir em cliques */
+  z-index: 1;
+}
+
+/* Certifique-se que o conteúdo do body fique acima da camada preta */
+body > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Container central */
+.login-container {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  padding: 0px 30px 30px 30px;
+  border-radius: 20px;
+  width: 350px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+
+/* Logo */
+.login-logo img {
+  width: 200px;
+  margin-bottom: 0px;
+}
+
+/* TABS */
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 15px;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 10px;
+  background: none;
+  border: none;
+  color: #ccc;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  border-bottom: 2px solid transparent;
+}
+
+.tab-btn.active {
+  color: #fff;
+  border-bottom: 2px solid #ff6a00;
+}
+
+/* Forms */
+.form {
+  display: none;
+  animation: fadeIn 0.4s ease;
+}
+
+.form.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Campos de input */
+.input-group {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.input-group i {
+  position: absolute;
+  left: 17px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #aaa;
+}
+
+.input-group input {
+  width: calc(100% - 20px); /* Ajuste para não ultrapassar as bordas */
+  padding: 10px 10px 10px 35px; /* Menos altura */
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  outline: none;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.input-group input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Botão de login */
+.btn-login {
+  width: 100%;
+  padding: 12px;
+  background: #ff6a00;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 10px;
+}
+
+.btn-login:hover {
+  background: #e55c00;
+}
+
+/* Links extras */
+.login-links {
+  margin-top: 15px;
+  font-size: 13px;
+}
+
+.login-links a {
+  color: #fff;
+  text-decoration: none;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+.login-links a:hover {
+  opacity: 1;
+}
+
+/* Botão Voltar ao Site */
+#back-to-site-btn {
+  margin-top: 20px;
+  background: transparent;
+  border: 2px solid #ff6a00;
+  color: #ff6a00;
+  padding: 8px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s, color 0.3s;
+  display: inline-block;
+}
+
+#back-to-site-btn:hover {
+  background-color: #ff6a00;
+  color: #fff;
+}

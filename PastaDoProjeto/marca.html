@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contacto - TM</title>
+
+  <!-- Estilos principais -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Fontes -->
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan&display=swap" rel="stylesheet" />
+
+  <!-- Ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+
+  <!-- Animações AOS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+  <style>
+    body {
+      padding-top: 60px;
+    }
+
+    .banner-panorama {
+      height: 33vh;
+      min-height: 250px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #f1efe7;
+      font-size: 2rem;
+      font-weight: 600;
+      position: relative;
+    }
+
+    .banner-panorama > div.overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(0, 0, 0, 0.6);
+      z-index: 1;
+    }
+
+    .banner-panorama h2 {
+      position: relative;
+      z-index: 2;
+      color: #ff6a00;
+      font-size: 3rem;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .page-content {
+      max-width: 1100px;
+      margin: 60px auto;
+      padding: 0 20px;
+      text-align: center;
+      color: #000000;
+    }
+
+    .page-content h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    .page-content p {
+      font-size: 1.2rem;
+      color: #555;
+      margin-bottom: 40px;
+    }
+
+    #header.scrolled {
+      background: #16364067;
+      backdrop-filter: blur(5px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    /* === Animação Typed.js fixo === */
+    .typed-wrapper {
+      display: inline-block;
+      min-width: 170px; /* suficiente para a palavra mais longa */
+      min-height: 1em;
+    }
+
+    .sobre-nos-section {
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    .sobre-nos-section h1.fixed-text {
+      font-size: 2.5rem;
+      color: #163640;
+      margin-bottom: 10px;
+    }
+
+    .sobre-nos-section h2.typing-text {
+      font-size: 2rem;
+      color: #ff6a00;
+      margin-bottom: 30px;
+    }
+
+    .sobre-nos-section p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto;
+      color: #444;
+    }
+
+    .typed-cursor {
+  opacity: 0; /* Esconde no início */
+  animation: blink 0.7s infinite;
+}
+
+.typing-text.started .typed-cursor {
+  opacity: 1; /* Mostra quando começar */
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+  </style>
+</head>
+<body class="contato">
+
+  <div class="custom-cursor"></div>
+
+  <!-- Header -->
+  <header id="header">
+    <div class="container" style="display: flex; align-items: center; justify-content: space-between;">
+      <div class="logo">
+        <a href="index.html">
+          <img src="https://i.ibb.co/BKwmJnrN/The-Brandium.png" alt="Logo TM" />
+        </a>
+      </div>
+
+      <nav style="display: flex; align-items: center; gap: 30px;">
+        <ul class="nav-links" style="display: flex; gap: 25px; margin: 0; padding: 0; list-style: none;">
+          <li><a href="marca.html">The Brandium</a></li>
+          <li><a href="servicos.html">Serviços</a></li>
+          <li><a href="portfolio.html">Portfólio</a></li>
+          <li><a href="contato.html">Contacto</a></li>
+        </ul>
+
+        <div class="login-btn">
+          <a href="login.html">
+            <i class="fa fa-user-circle"></i> Login
+          </a>
+        </div>
+      </nav>
+
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Banner -->
+  <section class="banner-panorama" style="position: relative; width: 100%; height: 33vh; min-height: 250px; overflow: hidden;">
+    <video autoplay muted loop playsinline
+      style="
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transform: translate(-50%, -50%);
+        z-index: 0;
+      ">
+      <source src="https://raw.githubusercontent.com/vscodebarral/videos/refs/heads/main/0_Abstract_Art_3d_Render_1280x720.mp4" type="video/mp4" />
+    </video>
+
+    <div style="
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: 1;
+    "></div>
+
+    <h2 style="
+      position: relative;
+      z-index: 2;
+      color: #ff6a00;
+      font-size: 3rem;
+      font-weight: 700;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    ">Sobre Nós</h2>
+  </section>
+
+  <!-- Sobre nós -->
+  <section class="sobre-nos-section">
+    <div class="container-sobre">
+      <h1 class="fixed-text">Construímos histórias que conectam</h1>
+
+      <!-- Texto animado -->
+      <h2 class="typing-text"><span class="typed-wrapper"><span id="typed-text"></span></span></h2>
+
+      <p>
+        Somos uma equipa apaixonada por design, tecnologia e inovação.  
+        Acreditamos que cada projeto é único e merece ser contado de forma autêntica.
+      </p>
+    </div>
+  </section>
+
+<script>
+  const typedTarget = document.querySelector('.typing-text');
+
+  new Typed("#typed-text", {
+    strings: ["experiências", "marcas", "pessoas", "ideias"],
+    typeSpeed: 100,
+    backSpeed: 50,
+    backDelay: 1500,
+    loop: true,
+    onBegin: function () {
+      typedTarget.classList.add('started');
+    }
+  });
+</script>
+
+
+
+  <!-- Blocos alternados -->
+  <section class="historia-blocos">
+    <!-- Bloco 1 - Imagem esquerda / Texto direita -->
+    <div class="bloco bloco-imagem-esquerda">
+      <div class="bloco-imagem">
+        <img src="https://picsum.photos/600/400?random=1" alt="Nossa origem">
+      </div>
+      <div class="bloco-texto">
+        <h2>The Brandium</h2>
+        <p>Fundada com o objetivo de aproximar pessoas e marcas, a nossa história é marcada por criatividade e autenticidade. Desde o início, acreditamos no poder de boas ideias bem executadas.</p>
+      </div>
+    </div>
+
+    <!-- Bloco 2 - Imagem direita / Texto esquerda -->
+    <div class="bloco bloco-imagem-direita">
+      <div class="bloco-texto">
+        <h2>Missão e Visão</h2>
+        <p>Mais do que uma agência, somos parceiros estratégicos. 
+          Criamos experiências que emocionam, transformam e geram conexões reais entre marcas e pessoas.</p>
+      </div>
+      <div class="bloco-imagem">
+        <img src="https://picsum.photos/600/400?random=2" alt="Nosso propósito">
+      </div>
+    </div>
+
+    <!-- Bloco 3 - Imagem esquerda / Texto direita -->
+    <div class="bloco bloco-imagem-esquerda">
+      <div class="bloco-imagem">
+        <img src="https://picsum.photos/600/400?random=3" alt="Nosso futuro">
+      </div>
+      <div class="bloco-texto">
+        <h2>Valores e Propósito</h2>
+        <p>Estamos sempre prontos para o próximo desafio. Queremos continuar inovando, criando e deixando um impacto positivo no mundo através de cada projeto que realizamos.</p>
+      </div>
+    </div>
+  </section>
+  
+
+  <style>
+    /* ===== Seção Sobre Nós ===== */
+    .sobre-nos-section {
+      padding: 100px 20px;
+      text-align: center;
+      background: #ffffff;
+    }
+
+    .container-sobre {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .fixed-text {
+      font-family: 'League Spartan', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: #000000;
+      margin-bottom: 0px;
+    }
+
+    .typing-text {
+      font-family: 'League Spartan', sans-serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #ff6a00;
+      min-height: 50px; /* para evitar salto vertical */
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 3px solid #ff6a00;
+      width: fit-content;
+      margin: 0 auto 30px auto;
+    }
+
+    /* Cursor blink */
+    @keyframes blinkCursor {
+      0%, 100% { border-color: transparent; }
+      50% { border-color: #ff6a00; }
+    }
+
+    .typing-text {
+      animation: blinkCursor 0.7s steps(1) infinite;
+    }
+
+    .sobre-nos-section p {
+      font-size: 1.3rem;
+      color: #555555;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 0px;
+    }
+
+    /* Wrapper para alinhar o contorno com o texto cinético */
+    .kinetic-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    /* 🔹 Texto oco com exatamente as mesmas métricas do cinético */
+    .kinetic-outline {
+      font-family: 'League Spartan', sans-serif;
+      font-size: 3.5rem;
+      line-height: 1.2;          /* igual ao kinetic-text */
+      font-weight: 700;
+      color: transparent;
+      -webkit-text-stroke: 0.8px #ccc; /* contorno super fino */
+      text-align: center;
+
+      /* Faz alinhar 1:1 com o outro texto */
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      margin: 0;                 /* garante sem deslocamento extra */
+      padding: 0;
+      opacity: 0.3;
+      pointer-events: none;
+    }
+
+    /* 🔹 Texto cinético sobre o oco */
+    .kinetic-text {
+      position: relative;
+      font-family: 'League Spartan', sans-serif;
+      font-size: 3.5rem;
+      line-height: 1.2;
+      font-weight: 700;
+      color: #111;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    /* ===== Blocos alternados ===== */
+    .historia-blocos {
+      max-width: 1100px;
+      margin: 80px auto;
+      padding: 0 20px;
+    }
+
+    .bloco {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      margin-bottom: 100px;
+    }
+
+    .bloco-imagem img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .bloco-texto {
+      flex: 1;
+    }
+
+    .bloco-texto h2 {
+      font-family: 'League Spartan', sans-serif;
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+      color: #111;
+    }
+
+    .bloco-texto p {
+      font-size: 1.1rem;
+      color: #444;
+      line-height: 1.6;
+    }
+
+    /* Alternância esquerda/direita */
+    .bloco-imagem-esquerda .bloco-imagem {
+      order: 1;
+      flex: 1;
+    }
+    .bloco-imagem-esquerda .bloco-texto {
+      order: 2;
+      flex: 1;
+    }
+
+    .bloco-imagem-direita .bloco-texto {
+      order: 1;
+      flex: 1;
+    }
+    .bloco-imagem-direita .bloco-imagem {
+      order: 2;
+      flex: 1;
+    }
+
+    /* Responsivo */
+    @media (max-width: 900px) {
+      .bloco {
+        flex-direction: column;
+        text-align: center;
+      }
+      .bloco-imagem,
+      .bloco-texto {
+        order: unset !important;
+      }
+    }
+  </style>
+
+  <!-- GSAP e animação -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const cursor = document.querySelector(".custom-cursor");
+    const clickableElements = document.querySelectorAll(
+      'a, button, input[type="submit"], [role="button"], .login-btn a, .nav-links a'
+    );
+
+    clickableElements.forEach(el => {
+      el.addEventListener("mouseenter", () => {
+        cursor.classList.add("hover");
+      });
+      el.addEventListener("mouseleave", () => {
+        cursor.classList.remove("hover");
+      });
+    });
+  });
+</script>
+
+
+<script>
+  window.addEventListener('scroll', () => {
+    const header = document.getElementById('header');
+    if (window.scrollY > 50) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
+</script>
+
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const textElement = document.querySelector(".kinetic-text");
+  const words = textElement.textContent.split(" ");
+  textElement.textContent = "";
+  
+
+  // Quebra cada palavra em <span>
+  words.forEach((word) => {
+    let span = document.createElement("span");
+    span.textContent = word + " ";
+    textElement.appendChild(span);
+  });
+
+  // Timeline controlada pelo scroll
+  gsap.timeline({
+    scrollTrigger: {
+      trigger: ".kinetic-text",
+      start: "top 60%",    // quando entra 80% na viewport
+      end: "bottom 0%",   // termina mais pra baixo
+      scrub: 2,         // segue o scroll
+      ease: "expo.out"
+    }
+  })
+  .from(".kinetic-text span", {
+    opacity: 0,
+    y: 40,
+    rotateX: -30,
+    stagger: 0.5,
+    duration: 0.8,
+    ease: "expo.out",
+  });
+  
+  // Blocos continuam aparecendo normalmente ao entrar na tela
+  gsap.utils.toArray(".bloco").forEach((bloco) => {
+    gsap.from(bloco, {
+      opacity: 0,
+      y: 50,
+      duration: 1.3,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: bloco,
+        start: "top 85%",
+      }
+    });
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const typingElement = document.querySelector(".typing-text");
+  const words = ["marcas", "pessoas", "ideias", "sonhos", "experiências"];
+  let wordIndex = 0;
+  let charIndex = 0;
+  let typing = true;
+  let delay = 100;
+  let pauseBetweenWords = 1500;
+
+  function type() {
+    if (typing) {
+      if (charIndex < words[wordIndex].length) {
+        typingElement.textContent += words[wordIndex].charAt(charIndex);
+        charIndex++;
+        setTimeout(type, delay);
+      } else {
+        typing = false;
+        setTimeout(type, pauseBetweenWords);
+      }
+    } else {
+      if (charIndex > 0) {
+        typingElement.textContent = words[wordIndex].substring(0, charIndex - 1);
+        charIndex--;
+        setTimeout(type, delay / 2);
+      } else {
+        typing = true;
+        wordIndex = (wordIndex + 1) % words.length;
+        setTimeout(type, delay);
+      }
+    }
+  }
+
+  type();
+});
+
+
+</script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const textElement = document.querySelector(".kinetic-text");
+      const words = textElement.textContent.split(" ");
+      textElement.textContent = "";
+
+      // Quebra cada palavra em <span>
+      words.forEach((word) => {
+        let span = document.createElement("span");
+        span.textContent = word + " ";
+        textElement.appendChild(span);
+      });
+
+      // Timeline controlada pelo scroll
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: ".kinetic-text",
+          start: "top 60%",    // quando entra 80% na viewport
+          end: "bottom 0%",   // termina mais pra baixo
+          scrub: 2,         // segue o scroll
+        },
+      }).to(".kinetic-text span", {
+        yPercent: -120,
+        stagger: 0.2,
+        ease: "power1.inOut",
+      });
+    });
+
+    // Cursor personalizado
+    const cursor = document.querySelector(".custom-cursor");
+    document.addEventListener("mousemove", e => {
+      cursor.style.left = e.clientX + "px";
+      cursor.style.top = e.clientY + "px";
+    });
+  </script>
+
+
+<!-- RODAPÉ -->
+<footer style="font-family: Arial, sans-serif; font-size: 14px; color: #ffffff; padding: 20px 0; position: relative; overflow: hidden;">
+  <div class="footer-bg"></div>
+  <div class="footer-container" style="max-width: 1200px; margin: 0 auto; padding: 0 15px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; position: relative; z-index: 1;">
+    
+    <p style="margin: 0; font-family: Arial, sans-serif; font-size: 14px; color: #ffffff;">© 2025 TM - Todos os direitos reservados</p>
+    
+    <nav class="footer-nav" style="display: flex; flex-direction: row; gap: 1.5rem; flex-wrap: wrap; justify-content: center;">
+      <a href="/politica-privacidade" style="color: #ffffff; text-decoration: none;">Política de Privacidade</a>
+      <a href="/termos-uso" style="color: #ffffff; text-decoration: none;">Termos de Uso</a>
+      <a href="/contacto" style="color: #ffffff; text-decoration: none;">Contacto</a>
+    </nav>
+  
+  </div>
+
+<style>
+  .footer-bg {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: repeating-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.1) 0,
+      rgba(255, 255, 255, 0.05) 2px,
+      transparent 2px,
+      transparent 6px
+    );
+    background-size: 40px 40px;
+    animation: moveStripes 2s linear infinite;
+    z-index: 0;
+    pointer-events: none;
+  }
+  @keyframes moveStripes {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 40px 40px;
+    }
+  }
+</style>
+
+</footer>
+
+<script>
+  // Pega o nome da página atual (ex: 'servicos.html', 'portfolio.html')
+  const currentPage = window.location.pathname.split("/").pop();
+
+  // Percorre todos os links da navbar
+  document.querySelectorAll(".nav-links a").forEach(link => {
+    // Compara o href do link com a página atual
+    if (link.getAttribute("href") === currentPage) {
+      link.classList.add("active"); // adiciona a classe que cria o underline
+    }
+  });
+</script>
+
+
+<!-- chatbot -->
+
+<!-- BOTÃO -->
+<button id="chatbot-toggle" aria-label="Abrir chat" aria-expanded="false" title="Abrir chat" class="chatbot-btn-rectangular">
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" >
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2z"/>
+  </svg>
+</button>
+
+<style>
+  /* Botão retangular flutuante */
+  .chatbot-btn-rectangular {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 70px !important;       /* Força largura */
+    height: 50px !important;      /* Força altura para 4:5 */
+    background: #ff6a00;           /* Cor viva para destaque */
+    border: none;
+    border-radius: 15px !important; /* Bordas arredondadas suaves */
+    cursor: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.15s ease;
+    user-select: none;
+    z-index: 1000;
+  }
+  .chatbot-btn-rectangular:hover,
+  .chatbot-btn-rectangular:focus {
+    background-color: #e05a00;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+    outline: none;
+    transform: scale(1.05);
+  }
+  .chatbot-btn-rectangular:active {
+    transform: scale(0.95);
+  }
+  .chatbot-btn-rectangular svg {
+    stroke: #ffffff;
+    width: 24px;
+    height: 24px;
+  }
+</style>
+
+<!-- PAINEL DO CHAT -->
+<div id="chatbot-panel" aria-live="polite" aria-label="Chatbot" hidden>
+  <header>
+    <h2>Olá! Como posso ajudar?</h2>
+    <button id="chatbot-close" aria-label="Fechar chat">✖</button>
+  </header>
+  
+  <section id="chat-messages" role="log" aria-live="polite" aria-relevant="additions"></section>
+
+  <!-- Campo para mensagem livre -->
+  <div id="chat-input-container">
+    <input type="text" id="user-input" placeholder="Escreva sua pergunta..." autocomplete="off" aria-label="Campo para escrever mensagem"/>
+    <button id="send-btn" disabled aria-label="Enviar mensagem">➤</button>
+  </div>
+
+  <section id="chat-options" aria-label="Perguntas frequentes">
+    <p>Escolha uma pergunta para começar:</p>
+    <div id="options-list"></div>
+  </section>
+
+  <footer>
+    <a href="https://wa.me/+351934653292" target="_blank" rel="noopener" class="whatsapp-link" aria-label="Fale conosco no WhatsApp">
+      <img src="https://i.ibb.co/5gb73Xbc/zimgscr2-removebg-preview.png" alt="WhatsApp" style="width:30px; height:30px; vertical-align: middle; margin-right: 8px;">
+      Fale connosco no WhatsApp!
+    </a>
+  </footer>
+</div>
+
+<style>
+  /* Botão flutuante */
+  #chatbot-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: #ff6a00;
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: none;
+    z-index: 1001;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    transition: background-color 0.3s ease;
+    display: none; /* Ocultado porque usamos o botão retangular */
+  }
+  #chatbot-toggle:hover {
+    background: #e05a00;
+  }
+
+  /* Painel mais compacto */
+  #chatbot-panel {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 360px;
+    max-height: 75vh;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transform-origin: bottom right;
+    transform: translateY(20px) scale(0.95);
+    pointer-events: none;
+    transition: opacity 0.3s cubic-bezier(0.4,0,0.2,1), transform 0.3s cubic-bezier(0.4,0,0.2,1);
+    font-family: 'League Spartan', sans-serif;
+    z-index: 1000;
+  }
+  #chatbot-panel.open {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+  }
+
+  /* Responsivo para mobile */
+  @media (max-width: 480px) {
+    #chatbot-panel {
+      width: 95%;
+      right: 2.5%;
+      bottom: 80px;
+      max-height: 70vh;
+    }
+  }
+
+  #chatbot-panel header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    background: #ff6a00;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    color: white;
+  }
+  #chatbot-panel header h2 {
+    margin: 0;
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+  #chatbot-close {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: none;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+  }
+  #chatbot-close:hover,
+  #chatbot-close:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #e05a00;
+    outline: none;
+  }
+
+  /* Área de mensagens */
+  #chat-messages {
+    flex: 1;
+    padding: 10px 15px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #send-btn:active {
+    transform: scale(0.9);
+    transition: transform 0.1s;
+  }
+
+  /* Bolhas de mensagem */
+  .message {
+    max-width: 80%;
+    padding: 10px 14px;
+    border-radius: 14px;
+    font-size: 0.9rem;
+    line-height: 1.3;
+    animation: fadeInUp 0.3s ease forwards;
+    white-space: pre-wrap;
+  }
+  .bot-message {
+    background: #ff6a00;
+    color: white;
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+  }
+  .user-message {
+    background: #eee;
+    color: #333;
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+  }
+
+  /* Digitação simulada */
+  #typing-indicator {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 10px;
+    max-width: 60px;
+  }
+  .dot {
+    width: 6px;
+    height: 6px;
+    background: #ff6a00;
+    border-radius: 50%;
+    animation: blink 1.4s infinite;
+  }
+  .dot:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  .dot:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+
+  @keyframes blink {
+    0%, 80%, 100% {
+      opacity: 0.3;
+    }
+    40% {
+      opacity: 1;
+    }
+  }
+
+  /* Container para input */
+  #chat-input-container {
+    display: flex;
+    gap: 8px;
+    padding: 8px 12px;
+    border-top: 1px solid #ddd;
+    background: #fafafa;
+  }
+  #chat-input-container input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  #chat-input-container input:focus {
+    outline: none;
+    border-color: #ff6a00;
+    box-shadow: 0 0 6px #ff6a00aa;
+  }
+  #chat-input-container input::placeholder {
+    transition: opacity 0.3s ease;
+  }
+  #chat-input-container input:focus::placeholder {
+    opacity: 0.5;
+  }
+
+  #chat-input-container button {
+    background: #ff6a00;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 10px;
+    cursor: none;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+  }
+  #chat-input-container button:disabled {
+    background: #d67c4a;
+    cursor: default;
+  }
+
+  /* Perguntas frequentes */
+  #chat-options {
+    padding: 8px 15px;
+    background: transparent;
+  }
+  #chat-options p {
+    margin: 0 0 6px 0;
+    font-weight: 400;
+    color: #666;
+    font-size: 0.85rem;
+  }
+  #options-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  #options-list button {
+    background: #ff6a00;
+    border: none;
+    border-radius: 9999px;
+    padding: 6px 14px;
+    color: white;
+    font-weight: 600;
+    cursor: none;
+    font-size: 0.85rem;
+    transition: transform 0.15s ease, background-color 0.3s ease;
+  }
+  #options-list button:hover:not(:disabled),
+  #options-list button:focus:not(:disabled) {
+    background-color: #e05a00;
+    transform: scale(1.05);
+    outline: none;
+  }
+  #options-list button:disabled {
+    background: #d67c4a;
+    cursor: default;
+  }
+
+  /* Footer com WhatsApp */
+  #chatbot-panel footer {
+    padding: 10px 15px;
+    border-top: 1px solid #ddd;
+    background: #ffffff;
+    text-align: center;
+  }
+  .whatsapp-link {
+    display: inline-flex;
+    align-items: center;
+    font-weight: 700;
+    color: #0f7f18;
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  .whatsapp-link:hover,
+  .whatsapp-link:focus {
+    text-decoration: underline;
+    outline: none;
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+
+<script>
+  (function() {
+    const toggleBtn = document.getElementById('chatbot-toggle');
+    const panel = document.getElementById('chatbot-panel');
+    const closeBtn = document.getElementById('chatbot-close');
+    const input = document.getElementById('user-input');
+    const sendBtn = document.getElementById('send-btn');
+    const messagesContainer = document.getElementById('chat-messages');
+    const optionsList = document.getElementById('options-list');
+
+    // Perguntas frequentes
+    const options = [
+      "Qual é o horário de funcionamento?",
+      "Como faço para agendar uma consulta?",
+      "Quais serviços vocês oferecem?",
+      "Onde vocês estão localizados?",
+      "Como posso entrar em contato?",
+    ];
+
+    // Inicializar botões de opções
+    options.forEach(option => {
+      const btn = document.createElement('button');
+      btn.textContent = option;
+      btn.type = 'button';
+      btn.addEventListener('click', () => {
+        addUserMessage(option);
+        respond(option);
+      });
+      optionsList.appendChild(btn);
+    });
+
+    // Mostrar botão retangular e esconder botão circular default (se existir)
+    document.querySelector('.chatbot-btn-rectangular').style.display = 'flex';
+
+    toggleBtn.addEventListener('click', () => {
+      const isOpen = panel.classList.toggle('open');
+      toggleBtn.setAttribute('aria-expanded', isOpen);
+      if (isOpen) {
+        input.focus();
+      }
+    });
+    closeBtn.addEventListener('click', () => {
+      panel.classList.remove('open');
+      toggleBtn.setAttribute('aria-expanded', false);
+      toggleBtn.focus();
+    });
+
+    // Habilitar botão enviar se input não vazio
+    input.addEventListener('input', () => {
+      sendBtn.disabled = input.value.trim().length === 0;
+    });
+
+    sendBtn.addEventListener('click', () => {
+      const userText = input.value.trim();
+      if (userText) {
+        addUserMessage(userText);
+        input.value = '';
+        sendBtn.disabled = true;
+        respond(userText);
+      }
+    });
+
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !sendBtn.disabled) {
+        sendBtn.click();
+      }
+    });
+
+    function addUserMessage(text) {
+      const msg = document.createElement('div');
+      msg.className = 'message user-message';
+      msg.textContent = text;
+      messagesContainer.appendChild(msg);
+      scrollToBottom();
+    }
+
+    function addBotMessage(text) {
+      const msg = document.createElement('div');
+      msg.className = 'message bot-message';
+      msg.textContent = text;
+      messagesContainer.appendChild(msg);
+      scrollToBottom();
+    }
+
+    function scrollToBottom() {
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+
+    // Simulação simples de resposta (a melhorar com IA ou API real)
+    function respond(text) {
+      // Mostrar indicador de digitação
+      const typing = document.createElement('div');
+      typing.id = 'typing-indicator';
+      typing.innerHTML = `<span class="dot"></span><span class="dot"></span><span class="dot"></span>`;
+      messagesContainer.appendChild(typing);
+      scrollToBottom();
+
+      setTimeout(() => {
+        typing.remove();
+        // Respostas fixas básicas para exemplo
+        let reply = "Desculpe, não entendi. Pode reformular?";
+        if (text.toLowerCase().includes('horário')) {
+          reply = "Nosso horário de funcionamento é das 9h às 18h, de segunda a sexta.";
+        } else if (text.toLowerCase().includes('agendar')) {
+          reply = "Para agendar uma consulta, por favor, envie-nos uma mensagem com sua disponibilidade.";
+        } else if (text.toLowerCase().includes('serviços')) {
+          reply = "Oferecemos consultas, suporte técnico e atendimento personalizado.";
+        } else if (text.toLowerCase().includes('localizados')) {
+          reply = "Estamos localizados na Rua Exemplo, 123, Centro.";
+        } else if (text.toLowerCase().includes('contato')) {
+          reply = "Você pode falar conosco pelo WhatsApp no link abaixo ou enviar um e-mail.";
+        }
+        addBotMessage(reply);
+      }, 1200);
+    }
+  })();
+</script>
+<!-- chatbot -->
+
+
+
+</body>
+</html>

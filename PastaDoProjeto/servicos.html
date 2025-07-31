@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Serviços - TM</title>
+  <body class="servicos"></body>
+
+  <!-- Estilos principais -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Fontes -->
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan&display=swap" rel="stylesheet" />
+
+  <!-- Ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+
+  <!-- Animações AOS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+  <div class="custom-cursor"></div>
+
+
+  <style>
+    /* ===== Ajuste para header fixo ===== */
+    body {
+      padding-top: 60px; /* espaço para o header fixo */
+      font-family: 'League Spartan', sans-serif;
+      background: #fafafa;
+    }
+
+    /* ===== Banner panorâmico ===== */
+    .banner-panorama {
+      height: 33vh;               
+      min-height: 250px;          
+      background-size: cover;     
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #f1efe7;
+      font-size: 2rem;
+      font-weight: 600;
+    }
+
+    /* ===== Título e texto da página ===== */
+    .page-content {
+      max-width: 1100px;
+      margin: 60px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .page-content h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      font-weight: 600;
+      color: #111;
+    }
+
+    .page-content p {
+      font-size: 1.2rem;
+      color: #555;
+      margin-bottom: 50px;
+    }
+
+    /* ===== Cards de serviços ===== */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: #fff;
+      padding: 40px 25px 35px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .card:hover {
+      transform: translateY(-12px) scale(1.05);
+      box-shadow:
+        0 15px 30px rgba(0, 0, 0, 0.15),
+        0 0 20px 4px rgba(255, 106, 0, 0.4);
+    }
+
+    .card i {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      color: #ff6a00;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover i {
+      transform: rotate(15deg) scale(1.2);
+    }
+
+    .card h3 {
+      font-size: 1.6rem;
+      margin-bottom: 15px;
+      color: #111;
+      font-weight: 700;
+      transition: color 0.3s ease;
+    }
+
+    .card:hover h3 {
+      color: #ff6a00;
+    }
+
+    .card p {
+      font-size: 1rem;
+      color: #555;
+      line-height: 1.6;
+      flex-grow: 1;
+    }
+
+    /* Botão Saiba Mais */
+    .card .btn-saiba-mais {
+      margin-top: 25px;
+      background: transparent;
+      border: 2px solid #ff6a00;
+      color: #ff6a00;
+      padding: 10px 28px;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      align-self: center;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .card .btn-saiba-mais:hover {
+      background: #ff6a00;
+      color: white;
+      box-shadow: 0 6px 15px rgba(255, 106, 0, 0.6);
+    }
+
+    /* ===== Modal ===== */
+    .modal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0,0,0,0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 9999;
+    }
+
+    .modal.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-content {
+      background: #fff;
+      padding: 30px 40px;
+      border-radius: 15px;
+      max-width: 600px;
+      width: 90%;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      position: relative;
+      text-align: left;
+    }
+
+    .modal-content h3 {
+      margin-top: 0;
+      color: #ff6a00;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .modal-content p {
+      font-size: 1.1rem;
+      color: #444;
+      line-height: 1.5;
+      margin-bottom: 25px;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: transparent;
+      border: none;
+      font-size: 1.8rem;
+      color: #ff6a00;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .modal-close:hover {
+      color: #cc5500;
+    }
+
+    /* Responsivo */
+    @media (max-width: 480px) {
+      .card h3 {
+        font-size: 1.3rem;
+      }
+      .card i {
+        font-size: 3rem;
+      }
+      .modal-content {
+        padding: 20px 25px;
+      }
+      .modal-content h3 {
+        font-size: 1.5rem;
+      }
+      .modal-content p {
+        font-size: 1rem;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+  <!-- Header fixo -->
+    <!-- NAVBAR -->
+  <header id="header">
+  <div class="container" style="display: flex; align-items: center; justify-content: space-between;">
+    <!-- LOGO -->
+    <div class="logo">
+      <a href="index.html">
+        <img
+          src="https://i.ibb.co/BKwmJnrN/The-Brandium.png"
+          alt="Logo TM"
+        />
+      </a>
+    </div>
+
+    <!-- NAV + LOGIN -->
+    <nav style="display: flex; align-items: center; gap: 30px;">
+      <ul class="nav-links" style="display: flex; gap: 25px; margin: 0; padding: 0; list-style: none;">
+        <li><a href="marca.html">The Brandium</a></li>
+        <li><a href="servicos.html">Serviços</a></li>
+        <li><a href="portfolio.html">Portfólio</a></li>
+        <li><a href="contato.html">Contacto</a></li>
+      </ul>
+
+      <!-- BOTÃO DE LOGIN -->
+      <div class="login-btn">
+        <a href="login.html">
+          <i class="fa fa-user-circle"></i> Login
+        </a>
+      </div>
+    </nav>
+
+    <!-- HAMBURGER MOBILE -->
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</header>
+
+<!-- Banner panorâmico -->
+<section class="banner-panorama" style="position: relative; width: 100%; height: 33vh; min-height: 250px; overflow: hidden;">
+
+  <!-- Vídeo de fundo -->
+  <video id="bannerVideo" autoplay muted loop playsinline style="
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+  ">
+    <source src="https://raw.githubusercontent.com/vscodebarral/videos/refs/heads/main/1118458_4k_Pattern_1280x720.mp4" type="video/mp4">
+  </video>
+
+  <!-- Camada preta semi-transparente para escurecer -->
+  <div style="
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+    z-index: 1;
+  "></div>
+
+  <!-- Texto -->
+  <h2 style="
+    position: relative;
+    z-index: 2;
+    color: #ff6a00;
+    font-size: 3rem;
+    font-weight: 700;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  ">Serviços</h2>
+
+</section>
+
+<script>
+  const video = document.getElementById('bannerVideo');
+  video.playbackRate = 0.2; // metade da velocidade normal
+</script>
+
+
+
+
+  <!-- Conteúdo da página -->
+  <main class="page-content" data-aos="fade-up">
+    <h1>Serviços Premium para Impulsionar o seu Negócio</h1>
+    <p>Transforme sua presença digital com serviços personalizados de alta qualidade. Aqui está o que oferecemos:</p>
+    
+    <div class="cards">
+      <div class="card" data-aos="zoom-in" data-aos-delay="0" data-service-title="Gestão Completa de Redes" data-service-desc="Planeamento estratégico, criação de conteúdo, monitoramento e interação para engajar seu público de forma eficaz. Inclui análise de métricas e otimização constante.">
+        <i class="fa-solid fa-chart-line"></i>
+        <h3>Gestão Completa de Redes</h3>
+        <p>Planeamento estratégico, criação de conteúdo, monitoramento e interação para engajar seu público.</p>
+        <button class="btn-saiba-mais">Saiba Mais</button>
+      </div>
+      <div class="card" data-aos="zoom-in" data-aos-delay="100" data-service-title="Criação de Conteúdo Premium" data-service-desc="Produção de fotos, vídeos e textos profissionais, que capturam a essência do seu negócio para aumentar o engajamento e atrair clientes.">
+        <i class="fa-solid fa-camera-retro"></i>
+        <h3>Criação de Conteúdo Premium</h3>
+        <p>Fotos, vídeos e textos com qualidade profissional para capturar a essência do seu negócio.</p>
+        <button class="btn-saiba-mais">Saiba Mais</button>
+      </div>
+      <div class="card" data-aos="zoom-in" data-aos-delay="200" data-service-title="Consultoria Estratégica" data-service-desc="Análise personalizada do seu negócio e recomendações práticas para maximizar resultados e crescimento digital. Suporte contínuo para decisões informadas.">
+        <i class="fa-solid fa-lightbulb"></i>
+        <h3>Consultoria Estratégica</h3>
+        <p>Análise personalizada e recomendações práticas para maximizar seus resultados online.</p>
+        <button class="btn-saiba-mais">Saiba Mais</button>
+      </div>
+      <div class="card" data-aos="zoom-in" data-aos-delay="300" data-service-title="Campanhas de Anúncios" data-service-desc="Criação, otimização e gestão de campanhas pagas para alcançar o público certo, aumentando vendas e notoriedade da sua marca.">
+        <i class="fa-solid fa-bullhorn"></i>
+        <h3>Campanhas de Anúncios</h3>
+        <p>Criação, otimização e gerenciamento de campanhas pagas para alcançar o público certo.</p>
+        <button class="btn-saiba-mais">Saiba Mais</button>
+      </div>
+      <div class="card" data-aos="zoom-in" data-aos-delay="400" data-service-title="Relatórios Detalhados" data-service-desc="Monitoramento detalhado das métricas de desempenho, com relatórios claros e personalizados para acompanhar o progresso e ajustar estratégias.">
+        <i class="fa-solid fa-chart-pie"></i>
+        <h3>Relatórios Detalhados</h3>
+        <p>Monitoramento de métricas com relatórios claros para acompanhar o progresso.</p>
+        <button class="btn-saiba-mais">Saiba Mais</button>
+      </div>
+      <div class="card" data-aos="zoom-in" data-aos-delay="500" data-service-title="Gestão Completa de Redes" data-service-desc="Planeamento estratégico, criação de conteúdo, monitoramento e interação para engajar seu público de forma eficaz. Inclui análise de métricas e otimização constante.">
+        <i class="fa-solid fa-chart-line"></i>
+        <h3>Gestão Completa de Redes</h3>
+        <p>Planeamento estratégico, criação de conteúdo, monitoramento e interação para engajar seu público.</p>
+        <button class="btn-saiba-mais">Saiba Mais</button>
+      </div>
+    </div>
+    <section class="testemunhos" data-aos="fade-up" style="max-width: 1100px; margin: 50px auto; padding: 0 20px;">
+  <h2 style="text-align: center; font-size: 2rem; color: #ff6a00; margin-bottom: 30px;">O que dizem os nossos clientes</h2>
+      <div class="testemunhos-list" style="display: grid; gap: 25px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+        <div class="testemunho" style="background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+          <p style="font-style: italic; color: #555;">“Excelente serviço e atenção ao detalhe. Recomendo muito!”</p>
+          <strong style="display: block; margin-top: 15px; color: #ff6a00;">— Maria Silva</strong>
+        </div>
+        <div class="testemunho" style="background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+          <p style="font-style: italic; color: #555;">“Profissionalismo e resultados visíveis desde o início.”</p>
+          <strong style="display: block; margin-top: 15px; color: #ff6a00;">— João Fernandes</strong>
+        </div>
+        <div class="testemunho" style="background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+          <p style="font-style: italic; color: #555;">“A equipa superou as nossas expectativas, 5 estrelas!”</p>
+          <strong style="display: block; margin-top: 15px; color: #ff6a00;">— Ana Costa</strong>
+        </div>
+      </div>
+    </section>
+
+
+
+
+    
+<section class="faq" style="max-width: 1100px; margin: 50px auto; padding: 0 20px;">
+  <h2 style="text-align: center; font-size: 2rem; color: #ff6a00; margin-bottom: 30px;">Perguntas Frequentes</h2>
+
+  <div class="faq-item">
+    <button class="faq-question">Como funciona o serviço de Gestão Completa de Redes?</button>
+    <div class="faq-answer">
+      <p>Oferecemos planejamento estratégico, criação de conteúdo e monitoramento para engajar seu público de forma eficaz.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">Quanto tempo leva para ver resultados?</button>
+    <div class="faq-answer">
+      <p>Os primeiros resultados costumam aparecer em 3 a 6 meses, dependendo do serviço e do setor.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">Vocês oferecem suporte contínuo?</button>
+    <div class="faq-answer">
+      <p>Sim, acompanhamos o seu progresso com relatórios e ajustamos estratégias para maximizar os resultados.</p>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </main>
+
+  <!-- Modal -->
+  <div class="modal" id="service-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title" tabindex="-1">
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Fechar modal">&times;</button>
+      <h3 id="modal-title"></h3>
+      <p id="modal-description"></p>
+    </div>
+  </div>
+
+<!-- RODAPÉ -->
+<footer style="font-family: Arial, sans-serif; font-size: 14px; color: #ffffff; padding: 20px 0; position: relative; overflow: hidden;">
+  <div class="footer-bg"></div>
+  <div class="footer-container" style="max-width: 1200px; margin: 0 auto; padding: 0 15px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; position: relative; z-index: 1;">
+    
+    <p style="margin: 0;">© 2025 TM - Todos os direitos reservados</p>
+    
+    <nav class="footer-nav" style="display: flex; flex-direction: row; gap: 1.5rem; flex-wrap: wrap; justify-content: center;">
+      <a href="/politica-privacidade" style="color: #ffffff; text-decoration: none;">Política de Privacidade</a>
+      <a href="/termos-uso" style="color: #ffffff; text-decoration: none;">Termos de Uso</a>
+      <a href="/contacto" style="color: #ffffff; text-decoration: none;">Contacto</a>
+    </nav>
+  
+  </div>
+
+<style>
+  .footer-bg {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: repeating-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.1) 0,
+      rgba(255, 255, 255, 0.05) 2px,
+      transparent 2px,
+      transparent 6px
+    );
+    background-size: 40px 40px;
+    animation: moveStripes 2s linear infinite;
+    z-index: 0;
+  }
+  @keyframes moveStripes {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 40px 40px;
+    }
+  }
+</style>
+
+</footer>
+
+
+
+<style>
+.site-footer {
+  background: #111;
+  color: #fff;
+  padding: 1rem 2rem;
+}
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+.footer-links a {
+  color: #ccc;
+  margin-left: 1rem;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.footer-links a:hover {
+  color: #fff;
+}
+</style>
+
+  <!-- AOS JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800,  // duração padrão das animações
+      once: true,     // animação uma vez só ao aparecer
+    });
+  </script>
+  <script src="script.js"></script>
+
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, once: false });
+
+    // Modal
+    const modal = document.getElementById('service-modal');
+    const modalTitle = document.getElementById('modal-title');
+    const modalDescription = document.getElementById('modal-description');
+    const modalCloseBtn = modal.querySelector('.modal-close');
+
+    // Abre modal com o conteúdo do card clicado
+    document.querySelectorAll('.btn-saiba-mais').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const card = e.target.closest('.card');
+        const title = card.getAttribute('data-service-title');
+        const desc = card.getAttribute('data-service-desc');
+        modalTitle.textContent = title;
+        modalDescription.textContent = desc;
+        modal.classList.add('active');
+        modal.setAttribute('aria-hidden', 'false');
+        modal.focus();
+      });
+    });
+
+    // Fecha modal
+    modalCloseBtn.addEventListener('click', () => {
+      modal.classList.remove('active');
+      modal.setAttribute('aria-hidden', 'true');
+    });
+
+    // Fecha modal ao clicar fora do conteúdo
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden', 'true');
+      }
+    });
+
+    // Fecha modal com tecla ESC
+    document.addEventListener('keydown', (e) => {
+      if(e.key === 'Escape' && modal.classList.contains('active')) {
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden', 'true');
+      }
+    });
+  </script>
+
+  <script src="script.js"></script>
+
+
+  <!-- chatbot -->
+
+<!-- BOTÃO -->
+<button id="chatbot-toggle" aria-label="Abrir chat" aria-expanded="false" title="Abrir chat" class="chatbot-btn-rectangular">
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" >
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2z"/>
+  </svg>
+</button>
+
+<style>
+  /* Botão retangular flutuante */
+  .chatbot-btn-rectangular {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 70px !important;       /* Força largura */
+    height: 50px !important;      /* Força altura para 4:5 */
+    background: #ff6a00;           /* Cor viva para destaque */
+    border: none;
+    border-radius: 15px !important; /* Bordas arredondadas suaves */
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.15s ease;
+    user-select: none;
+    z-index: 1000;
+  }
+  .chatbot-btn-rectangular:hover,
+  .chatbot-btn-rectangular:focus {
+    background-color: #e05a00;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+    outline: none;
+    transform: scale(1.05);
+  }
+  .chatbot-btn-rectangular:active {
+    transform: scale(0.95);
+  }
+  .chatbot-btn-rectangular svg {
+    stroke: #ffffff;
+    width: 24px;
+    height: 24px;
+  }
+</style>
+
+<!-- PAINEL DO CHAT -->
+<div id="chatbot-panel" aria-live="polite" aria-label="Chatbot" hidden>
+  <header>
+    <h2>Olá! Como posso ajudar?</h2>
+    <button id="chatbot-close" aria-label="Fechar chat">✖</button>
+  </header>
+  
+  <section id="chat-messages" role="log" aria-live="polite" aria-relevant="additions"></section>
+
+  <!-- Campo para mensagem livre -->
+  <div id="chat-input-container">
+    <input type="text" id="user-input" placeholder="Escreva sua pergunta..." autocomplete="off" aria-label="Campo para escrever mensagem"/>
+    <button id="send-btn" disabled aria-label="Enviar mensagem">➤</button>
+  </div>
+
+  <section id="chat-options" aria-label="Perguntas frequentes">
+    <p>Escolha uma pergunta para começar:</p>
+    <div id="options-list"></div>
+  </section>
+
+  <footer>
+    <a href="https://wa.me/+351934653292" target="_blank" rel="noopener" class="whatsapp-link" aria-label="Fale conosco no WhatsApp">
+      <img src="https://i.ibb.co/5gb73Xbc/zimgscr2-removebg-preview.png" alt="WhatsApp" style="width:30px; height:30px; vertical-align: middle; margin-right: 8px;">
+      Fale connosco no WhatsApp!
+    </a>
+  </footer>
+</div>
+
+<style>
+  /* Botão flutuante */
+  #chatbot-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: #ff6a00;
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    z-index: 1001;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    transition: background-color 0.3s ease;
+    display: none; /* Ocultado porque usamos o botão retangular */
+  }
+  #chatbot-toggle:hover {
+    background: #e05a00;
+  }
+
+  /* Painel mais compacto */
+  #chatbot-panel {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 360px;
+    max-height: 75vh;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transform-origin: bottom right;
+    transform: translateY(20px) scale(0.95);
+    pointer-events: none;
+    transition: opacity 0.3s cubic-bezier(0.4,0,0.2,1), transform 0.3s cubic-bezier(0.4,0,0.2,1);
+    font-family: 'League Spartan', sans-serif;
+    z-index: 1000;
+  }
+  #chatbot-panel.open {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+  }
+
+  /* Responsivo para mobile */
+  @media (max-width: 480px) {
+    #chatbot-panel {
+      width: 95%;
+      right: 2.5%;
+      bottom: 80px;
+      max-height: 70vh;
+    }
+  }
+
+  #chatbot-panel header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    background: #ff6a00;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    color: white;
+  }
+  #chatbot-panel header h2 {
+    margin: 0;
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+  #chatbot-close {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+  }
+  #chatbot-close:hover,
+  #chatbot-close:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #e05a00;
+    outline: none;
+  }
+
+  /* Área de mensagens */
+  #chat-messages {
+    flex: 1;
+    padding: 10px 15px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #send-btn:active {
+    transform: scale(0.9);
+    transition: transform 0.1s;
+  }
+
+  /* Bolhas de mensagem */
+  .message {
+    max-width: 80%;
+    padding: 10px 14px;
+    border-radius: 14px;
+    font-size: 0.9rem;
+    line-height: 1.3;
+    animation: fadeInUp 0.3s ease forwards;
+    white-space: pre-wrap;
+  }
+  .bot-message {
+    background: #ff6a00;
+    color: white;
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+  }
+  .user-message {
+    background: #eee;
+    color: #333;
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+  }
+
+  /* Digitação simulada */
+  #typing-indicator {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 10px;
+    max-width: 60px;
+  }
+  .dot {
+    width: 6px;
+    height: 6px;
+    background: #ff6a00;
+    border-radius: 50%;
+    animation: blink 1.4s infinite;
+  }
+  .dot:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  .dot:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+
+  @keyframes blink {
+    0%, 80%, 100% {
+      opacity: 0.3;
+    }
+    40% {
+      opacity: 1;
+    }
+  }
+
+  /* Container para input */
+  #chat-input-container {
+    display: flex;
+    gap: 8px;
+    padding: 8px 12px;
+    border-top: 1px solid #ddd;
+    background: #fafafa;
+  }
+  #chat-input-container input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  #chat-input-container input:focus {
+    outline: none;
+    border-color: #ff6a00;
+    box-shadow: 0 0 6px #ff6a00aa;
+  }
+  #chat-input-container input::placeholder {
+    transition: opacity 0.3s ease;
+  }
+  #chat-input-container input:focus::placeholder {
+    opacity: 0.5;
+  }
+
+  #chat-input-container button {
+    background: #ff6a00;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+  }
+  #chat-input-container button:disabled {
+    background: #d67c4a;
+    cursor: default;
+  }
+
+  /* Perguntas frequentes */
+  #chat-options {
+    padding: 8px 15px;
+    background: transparent;
+  }
+  #chat-options p {
+    margin: 0 0 6px 0;
+    font-weight: 400;
+    color: #666;
+    font-size: 0.85rem;
+  }
+  #options-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  #options-list button {
+    background: #ff6a00;
+    border: none;
+    border-radius: 9999px;
+    padding: 6px 14px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: transform 0.15s ease, background-color 0.3s ease;
+  }
+  #options-list button:hover:not(:disabled),
+  #options-list button:focus:not(:disabled) {
+    background-color: #e05a00;
+    transform: scale(1.05);
+    outline: none;
+  }
+  #options-list button:disabled {
+    background: #d67c4a;
+    cursor: default;
+  }
+
+  /* Footer com WhatsApp */
+  #chatbot-panel footer {
+    padding: 10px 15px;
+    border-top: 1px solid #ddd;
+    background: #ffffff;
+    text-align: center;
+  }
+  .whatsapp-link {
+    display: inline-flex;
+    align-items: center;
+    font-weight: 700;
+    color: #0f7f18;
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  .whatsapp-link:hover,
+  .whatsapp-link:focus {
+    text-decoration: underline;
+    outline: none;
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+
+<script>
+  (function() {
+    const toggleBtn = document.getElementById('chatbot-toggle');
+    const panel = document.getElementById('chatbot-panel');
+    const closeBtn = document.getElementById('chatbot-close');
+    const input = document.getElementById('user-input');
+    const sendBtn = document.getElementById('send-btn');
+    const messagesContainer = document.getElementById('chat-messages');
+    const optionsList = document.getElementById('options-list');
+
+    // Perguntas frequentes
+    const options = [
+      "Qual é o horário de funcionamento?",
+      "Como faço para agendar uma consulta?",
+      "Quais serviços vocês oferecem?",
+      "Onde vocês estão localizados?",
+      "Como posso entrar em contato?",
+    ];
+
+    // Inicializar botões de opções
+    options.forEach(option => {
+      const btn = document.createElement('button');
+      btn.textContent = option;
+      btn.type = 'button';
+      btn.addEventListener('click', () => {
+        addUserMessage(option);
+        respond(option);
+      });
+      optionsList.appendChild(btn);
+    });
+
+    // Mostrar botão retangular e esconder botão circular default (se existir)
+    document.querySelector('.chatbot-btn-rectangular').style.display = 'flex';
+
+    toggleBtn.addEventListener('click', () => {
+      const isOpen = panel.classList.toggle('open');
+      toggleBtn.setAttribute('aria-expanded', isOpen);
+      if (isOpen) {
+        input.focus();
+      }
+    });
+    closeBtn.addEventListener('click', () => {
+      panel.classList.remove('open');
+      toggleBtn.setAttribute('aria-expanded', false);
+      toggleBtn.focus();
+    });
+
+    // Habilitar botão enviar se input não vazio
+    input.addEventListener('input', () => {
+      sendBtn.disabled = input.value.trim().length === 0;
+    });
+
+    sendBtn.addEventListener('click', () => {
+      const userText = input.value.trim();
+      if (userText) {
+        addUserMessage(userText);
+        input.value = '';
+        sendBtn.disabled = true;
+        respond(userText);
+      }
+    });
+
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !sendBtn.disabled) {
+        sendBtn.click();
+      }
+    });
+
+    function addUserMessage(text) {
+      const msg = document.createElement('div');
+      msg.className = 'message user-message';
+      msg.textContent = text;
+      messagesContainer.appendChild(msg);
+      scrollToBottom();
+    }
+
+    function addBotMessage(text) {
+      const msg = document.createElement('div');
+      msg.className = 'message bot-message';
+      msg.textContent = text;
+      messagesContainer.appendChild(msg);
+      scrollToBottom();
+    }
+
+    function scrollToBottom() {
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+
+    // Simulação simples de resposta (a melhorar com IA ou API real)
+    function respond(text) {
+      // Mostrar indicador de digitação
+      const typing = document.createElement('div');
+      typing.id = 'typing-indicator';
+      typing.innerHTML = `<span class="dot"></span><span class="dot"></span><span class="dot"></span>`;
+      messagesContainer.appendChild(typing);
+      scrollToBottom();
+
+      setTimeout(() => {
+        typing.remove();
+        // Respostas fixas básicas para exemplo
+        let reply = "Desculpe, não entendi. Pode reformular?";
+        if (text.toLowerCase().includes('horário')) {
+          reply = "Nosso horário de funcionamento é das 9h às 18h, de segunda a sexta.";
+        } else if (text.toLowerCase().includes('agendar')) {
+          reply = "Para agendar uma consulta, por favor, envie-nos uma mensagem com sua disponibilidade.";
+        } else if (text.toLowerCase().includes('serviços')) {
+          reply = "Oferecemos consultas, suporte técnico e atendimento personalizado.";
+        } else if (text.toLowerCase().includes('localizados')) {
+          reply = "Estamos localizados na Rua Exemplo, 123, Centro.";
+        } else if (text.toLowerCase().includes('contato')) {
+          reply = "Você pode falar conosco pelo WhatsApp no link abaixo ou enviar um e-mail.";
+        }
+        addBotMessage(reply);
+      }, 1200);
+    }
+  })();
+</script>
+<!-- chatbot -->
+
+
+
+<script>
+  // Pega o nome da página atual (ex: 'servicos.html', 'portfolio.html')
+  const currentPage = window.location.pathname.split("/").pop();
+
+  // Percorre todos os links da navbar
+  document.querySelectorAll(".nav-links a").forEach(link => {
+    // Compara o href do link com a página atual
+    if (link.getAttribute("href") === currentPage) {
+      link.classList.add("active"); // adiciona a classe que cria o underline
+    }
+  });
+</script>
+
+
+</body>
+</html>
