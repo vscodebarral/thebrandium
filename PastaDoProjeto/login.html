@@ -65,9 +65,9 @@
     onAuthStateChanged(auth, user => {
       if (user) {
         if (user.uid === adminUID) {
-          window.location.href = "admin.html";
+          window.location.href = "Administrador/admin.html";
         } else {
-          window.location.href = "dashboard.html";
+          window.location.href = "Dashboard/index.html";
         }
       }
     });

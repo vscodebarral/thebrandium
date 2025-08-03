@@ -4,57 +4,61 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Dashboard - TM</title>
-  <link rel="stylesheet" href="dashboard.css" />
+
+  <!-- Fontes e Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700&family=Playfair+Display&display=swap" rel="stylesheet" />
+
+  <!-- FullCalendar CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css" rel="stylesheet">
+
+  <!-- CSS personalizado -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
   <div class="dashboard-container">
 
     <!-- Sidebar -->
     <aside class="sidebar">
-      <div class="sidebar-logo">
-        <h2>PORTAL TESTE</h2>
+      <div class="sidebar-top">
+        <div class="client-logo">
+          <img src="https://via.placeholder.com/80" alt="Logo Cliente" />
+        </div>
+        <div class="sidebar-client-name" id="client-name">Cliente Alpha</div>
       </div>
-      <ul class="sidebar-menu">
-        <li class="active"><a href="dashboard.html" class="nav-link"><i class="fa fa-home"></i> Dashboard</a></li>
-        <li><a href="branding.html" class="nav-link"><i class="fa fa-palette"></i> Branding</a></li>
-        <li><a href="publicacoes.html" class="nav-link"><i class="fa fa-image"></i> Publicações</a></li>
-        <li><a href="artigos.html" class="nav-link"><i class="fa fa-file-alt"></i> Artigos</a></li>
-        <li><a href="newsletters.html" class="nav-link"><i class="fa fa-envelope"></i> Newsletters</a></li>
-        <li><a href="documentos.html" class="nav-link"><i class="fa fa-folder-open"></i> Documentos</a></li>
-        <li><a href="reunioes.html" class="nav-link"><i class="fa fa-handshake"></i> Reuniões</a></li>
-        <li><a href="analytics.html" class="nav-link"><i class="fa fa-chart-line"></i> Analytics</a></li>
+
+      <ul class="sidebar-menu" id="sidebar-menu">
+        <li class="active"><a href="dashboard.html"><i class="fa fa-home"></i><span>Dashboard</span></a></li>
+        <li><a href="branding.html"><i class="fa fa-palette"></i><span>Branding</span></a></li>
+        <li><a href="publicacoes.html"><i class="fa fa-image"></i><span>Publicações</span></a></li>
+        <li><a href="artigos.html"><i class="fa fa-file-alt"></i><span>Artigos</span></a></li>
+        <li><a href="newsletters.html"><i class="fa fa-envelope"></i><span>Newsletters</span></a></li>
+        <li><a href="documentos.html"><i class="fa fa-folder-open"></i><span>Documentos</span></a></li>
+        <li><a href="reunioes.html"><i class="fa fa-handshake"></i><span>Reuniões</span></a></li>
+        <li><a href="analytics.html"><i class="fa fa-chart-line"></i><span>Analytics</span></a></li>
       </ul>
+
       <div class="sidebar-bottom">
         <a href="#"><i class="fa fa-sign-out-alt"></i> Sair</a>
       </div>
     </aside>
 
-    <!-- Main content -->
+    <!-- Main Content -->
     <main class="main-content">
-
-      <!-- Top bar -->
       <header class="top-bar">
         <div class="search-container">
           <i class="fa fa-search"></i>
           <input type="text" placeholder="Pesquisar..." />
         </div>
-        <a href="#" class="logout-link">Sair</a>
       </header>
 
-      <!-- Dashboard content -->
       <section class="dashboard-grid">
-
-        <!-- Calendário -->
         <div class="card large">
           <h3>Calendário de Conteúdos</h3>
-          <div class="calendar-placeholder">
-            <p>Calendário aqui</p>
-          </div>
+          <!-- FullCalendar irá aparecer aqui -->
+          <div id="calendar"></div>
         </div>
 
-        <!-- Tarefas -->
         <div class="card">
           <h3>Tarefas</h3>
           <input type="text" placeholder="Nomear campanhas" />
@@ -62,28 +66,24 @@
           <button onclick="saveData('tarefas')">Guardar Tarefa</button>
         </div>
 
-        <!-- Publicações -->
         <div class="card">
           <h3>Publicações Pendentes</h3>
           <p>3 Candidaturas</p>
           <button onclick="location.href='publicacoes.html'">Visualizar</button>
         </div>
 
-        <!-- Artigos -->
         <div class="card">
           <h3>Artigos Escritos</h3>
           <p>2 Pendentes</p>
           <button onclick="location.href='artigos.html'">Aprovar</button>
         </div>
 
-        <!-- Newsletters -->
         <div class="card">
           <h3>Newsletters</h3>
           <p>1 por Aprovar</p>
           <button onclick="location.href='newsletters.html'">Aprovar</button>
         </div>
 
-        <!-- Documentos -->
         <div class="card">
           <h3>Documentos</h3>
           <ul>
@@ -94,7 +94,6 @@
           <button onclick="location.href='documentos.html'">Abrir</button>
         </div>
 
-        <!-- Reuniões -->
         <div class="card">
           <h3>Reuniões</h3>
           <p>📅 2 de maio, 2024</p>
@@ -102,7 +101,6 @@
           <button onclick="location.href='reunioes.html'">Ver mais</button>
         </div>
 
-        <!-- Analytics -->
         <div class="card">
           <h3>Analytics</h3>
           <p>Engajamento: 12.4%</p>
@@ -110,19 +108,19 @@
           <button onclick="location.href='analytics.html'">Ver Detalhes</button>
         </div>
 
-        <!-- Branding -->
         <div class="card">
           <h3>Branding</h3>
           <p>Sem dados</p>
           <button onclick="location.href='branding.html'">Completar</button>
         </div>
-
       </section>
-
     </main>
-
   </div>
-  
-  <script src="dashboard.js" type="module"></script>
+
+  <!-- FullCalendar JS -->
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.js"></script>
+
+  <!-- JS personalizado -->
+  <script src="script.js" type="module"></script>
 </body>
 </html>

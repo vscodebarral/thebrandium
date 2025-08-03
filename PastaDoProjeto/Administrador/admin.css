@@ -1,0 +1,321 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700&family=Playfair+Display:wght@500;700&display=swap');
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Background e fonte geral */
+html, body {
+  height: 100vh;
+  width: 100vw;
+  font-family: 'League Spartan', sans-serif;
+  background-color: #225cb468;
+  background-image: url('https://i.ibb.co/xNDNLHn/105861.jpg');
+  background-repeat: repeat;
+  background-size: 200px;
+  display: flex;
+  overflow: hidden;
+}
+
+/* Menu lateral */
+aside {
+  width: 260px;
+  background: white;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.07);
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1.5rem 1rem;
+  gap: 1rem;
+}
+
+/* Logo */
+.logo img {
+  height: 160px;
+  margin: -3.5rem 0 -3.5rem -0.5rem;
+  align-self: center;
+}
+
+/* Navegação vertical */
+.menu {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.menu-btn {
+  background: none;
+  border: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #555;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  text-align: left;
+  transition: all 0.3s ease;
+  width: 100%;
+  font-family: 'League Spartan', sans-serif;
+  position: relative;
+}
+
+.menu-btn::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background: #ff6a00;
+  transition: width 0.3s ease;
+}
+
+.menu-btn:hover::before,
+.menu-btn.active::before {
+  width: 100%;
+}
+
+.menu-btn:hover,
+.menu-btn:focus,
+.menu-btn.active {
+  background: #ff6a00;
+  color: white;
+  box-shadow: 0 0 8px #ff6a00;
+  outline: none;
+}
+
+/* Botão logout */
+#logout-btn {
+  margin-top: auto;
+  background: #ff6a00;
+  color: white;
+  font-weight: 700;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-family: 'League Spartan', sans-serif;
+  transition: background 0.3s ease;
+}
+
+#logout-btn:hover {
+  background: #cc5200;
+}
+
+/* Área principal */
+main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* Container de conteúdo */
+#content-area {
+  display: flex;
+  gap: 2rem;
+  flex: 1;
+  padding: 2rem 3rem;
+  overflow: hidden;
+}
+
+/* Painéis principais */
+.left-panel,
+.right-panel {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  overflow-y: auto;
+  min-height: 0;
+  backdrop-filter: blur(3px);
+}
+
+/* Cabeçalhos */
+.header-block {
+  background: #f0f2f5;
+  padding: 1rem 1.5rem;
+  border-radius: 16px;
+  box-shadow: inset 0 -1px 0 #dce3eb;
+}
+
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem;
+  color: #222;
+}
+
+/* Formulários */
+form {
+  max-width: 600px;
+}
+
+label {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 0.75rem 1.2rem;
+  border: 1.8px solid #d1d9e6;
+  border-radius: 14px;
+  font-size: 1rem;
+  margin-bottom: 1.4rem;
+  transition: 0.3s ease;
+  font-family: inherit;
+  resize: vertical;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #ff6a00;
+  box-shadow: 0 0 10px rgba(255, 106, 0, 0.4);
+  outline: none;
+}
+
+/* Botão de submit */
+.submit-btn {
+  background: #ff6a00;
+  color: white;
+  padding: 0.85rem 2.5rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-family: 'League Spartan', sans-serif;
+  transition: background 0.3s ease;
+}
+
+.submit-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background: #cc5300;
+}
+
+/* Listas */
+.clients-list,
+.tasks-list {
+  max-width: 700px;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e0e0e0;
+  list-style: none;
+  color: #555;
+  font-size: 1rem;
+}
+
+.clients-list li,
+.tasks-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid #eee;
+  align-items: center;
+}
+
+.task-desc {
+  flex: 1;
+  margin-right: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tasks-list input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: #ff6a00;
+  margin-right: 0.75rem;
+}
+
+.tasks-list li.completed .task-desc {
+  text-decoration: line-through;
+  color: #999;
+  font-style: italic;
+}
+
+/* Botão de exclusão */
+.delete-btn {
+  background: none;
+  border: none;
+  color: #ff3b30;
+  font-weight: 700;
+  font-family: 'League Spartan', sans-serif;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  font-size: 1rem;
+}
+
+.delete-btn:hover {
+  color: #b22222;
+}
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  background: #333;
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  z-index: 9999;
+  font-family: 'Playfair Display', serif;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.toast.success {
+  background-color: #28a745;
+}
+
+.toast.error {
+  background-color: #dc3545;
+}
+
+.toast.warning {
+  background-color: #ffc107;
+  color: #222;
+}
+
+.toast.info {
+  background-color: #007bff;
+}
+
+/* Scroll personalizado */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #999;
+}

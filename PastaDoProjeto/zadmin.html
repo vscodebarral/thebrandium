@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard Admin</title>
+  <link rel="stylesheet" href="zadmin.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    /* Estilo moderno para inputs e select "botões" */
+    .styled-input,
+    .styled-select {
+      padding: 10px 18px;
+      border: none;
+      border-radius: 30px;
+      background: linear-gradient(135deg, #6a9fff, #3b64db);
+      color: white;
+      font-weight: 600;
+      font-size: 14px;
+      box-shadow: 0 4px 12px rgba(59, 100, 219, 0.4);
+      cursor: pointer;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+      outline: none;
+      min-width: 160px;
+      text-align: center;
+      user-select: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      position: relative;
+    }
+
+    .styled-input:hover,
+    .styled-select:hover,
+    .styled-input:focus,
+    .styled-select:focus {
+      background: linear-gradient(135deg, #3b64db, #6a9fff);
+      box-shadow: 0 6px 18px rgba(59, 100, 219, 0.6);
+      color: #f0f0f0;
+    }
+
+    /* Ícone para o select */
+    .styled-select {
+      background-image:
+        url("data:image/svg+xml;charset=US-ASCII,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='white'%3e%3cpath d='M4 6l4 4 4-4z'/%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      background-size: 12px 12px;
+      padding-right: 40px;
+    }
+
+    /* Removido o ícone do calendário do input date para que fique igual ao select, sem emoji */
+    /* Agora o input date tem o mesmo estilo do select */
+
+    input[type="date"].styled-input {
+      /* mesmo background e estilo do select */
+      background-image: none;
+      padding-right: 40px; /* igual ao select */
+    }
+
+    /* Remove seta default do date input para Webkit */
+    input[type="date"].styled-input::-webkit-calendar-picker-indicator {
+      opacity: 0;
+      cursor: pointer;
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      z-index: 2;
+    }
+
+    /* Container flex com gap menor para aproximar os campos */
+    .date-priority-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .date-priority-group label {
+      font-weight: 600;
+      white-space: nowrap;
+      color: #163640;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <h1>Admin Dashboard</h1>
+    </div>
+    <div class="header-right">
+      <label for="clientSelector">Cliente:</label>
+      <select id="clientSelector">
+        <option value="" disabled selected>Selecionar cliente</option>
+      </select>
+    </div>
+  </header>
+
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <img src="https://i.ibb.co/BKwmJnrN/The-Brandium.png" alt="Brandium Logo" class="sidebar-logo" />
+    </div>
+    <nav>
+      <button data-section="clients" class="active"><i class="fas fa-users"></i> Clientes</button>
+      <button data-section="publications"><i class="fas fa-newspaper"></i> Publicações</button>
+      <button data-section="documents"><i class="fas fa-file-alt"></i> Documentos</button>
+      <button data-section="tasks"><i class="fas fa-tasks"></i> Tarefas</button>
+    </nav>
+  </aside>
+
+  <main>
+    <section id="clients" class="section active">
+      <h2>Gestão de Clientes</h2>
+      <form id="client-form" enctype="multipart/form-data">
+        <input type="text" id="clientName" placeholder="Nome" required />
+        <input type="email" id="clientEmail" placeholder="Email" required />
+        <input type="password" id="clientPassword" placeholder="Password" required />
+        <input type="text" id="clientRole" placeholder="Cargo" />
+
+        <label class="file-label" for="clientLogo">
+          <input type="file" id="clientLogo" accept="image/*" />
+          <span>Carregar Logo</span>
+        </label>
+
+        <p id="logoNameDisplay" style="font-style: italic; margin-top: 8px;">Nenhuma imagem selecionada</p>
+
+        <img id="logoPreview" alt="Preview do logo" style="max-width: 200px; max-height: 200px; display: none; margin-top: 10px; border: 1px solid #ccc; padding: 4px; border-radius: 4px;" />
+
+        <button type="submit" style="margin-top: 15px;">Adicionar Cliente</button>
+      </form>
+
+      <h2 style="margin-top: 40px; color: #163640; font-weight: 700; font-size: 24px;">Clientes Existentes</h2>
+
+      <div class="client-list" id="clientsListContainer">
+        <!-- Clientes do Firebase serão inseridos aqui -->
+      </div>
+    </section>
+
+    <section id="publications" class="section">
+      <h2>Publicações</h2>
+      <p>Em desenvolvimento...</p>
+    </section>
+
+    <section id="documents" class="section">
+      <h2>Documentos</h2>
+      <p>Em desenvolvimento...</p>
+    </section>
+
+    <section id="tasks" class="section">
+      <h2>Tarefas</h2>
+
+      <form id="task-form" style="max-width: 600px; margin-bottom: 40px; display: flex; flex-direction: column; gap: 12px;">
+        <input type="text" name="title" placeholder="Título da Tarefa" required style="width: 30%; padding: 8px;" />
+        
+        <div style="display: flex; gap: 16px;">
+          <textarea name="comment" placeholder="Comentário adicional (opcional)" rows="5" style="flex: 1; padding: 8px; resize: vertical;"></textarea>
+          <textarea name="description" placeholder="Descrição da Tarefa" rows="5" style="flex: 1; padding: 8px; resize: vertical;"></textarea>
+        </div>
+        
+        <div class="date-priority-group">
+          <label for="dueDate">Data de Entrega:</label>
+          <input id="dueDate" type="date" name="dueDate" class="styled-input" />
+          
+          <label for="priority">Prioridade:</label>
+          <select id="priority" name="priority" required class="styled-select">
+            <option value="Baixa">Baixa</option>
+            <option value="Média" selected>Média</option>
+            <option value="Alta">Alta</option>
+          </select>
+        </div>
+        
+        <button type="submit" style="margin-top: 15px;">Adicionar Tarefa</button>
+      </form>
+
+      <div>
+        <h3>Tarefas em Execução</h3>
+        <div id="tasksInProgress" class="task-list">
+          <div class="task-card">
+            <h3>Título da Tarefa</h3>
+            <p>Descrição detalhada da tarefa que pode ser bem longa e precisa quebrar linha corretamente sem estourar.</p>
+            <div style="display:flex; gap:10px; align-items:center; margin-top:12px;">
+            </div>
+          </div>
+          <!-- Mais cards aqui -->
+        </div>
+      </div>
+
+      <div style="margin-top: 40px;">
+        <h3>Tarefas Concluídas</h3>
+        <div id="tasksCompleted" class="task-list">
+          <div class="task-card">
+            <h3>Título da Tarefa</h3>
+            <p>Descrição detalhada da tarefa que pode ser bem longa e precisa quebrar linha corretamente sem estourar.</p>
+            <div style="display:flex; gap:10px; align-items:center; margin-top:12px;">
+            </div>
+          </div>
+          <!-- Mais cards aqui -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="loader" class="loader hidden"></div>
+  <div id="toast-container"></div>
+  <script type="module" src="zadmin.js"></script>
+</body>
+</html>

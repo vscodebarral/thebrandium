@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+  <aside role="navigation" aria-label="Menu Principal">
+    <div class="logo">
+      <img src="https://i.ibb.co/DPKQr5F0/The-Brandium-Inverse.png" alt="Logo The Brandium" />
+    </div>
+    <nav>
+      <ul class="menu">
+        <li><button class="menu-btn active" data-section="clients" aria-selected="true">Clientes</button></li>
+        <li><button class="menu-btn" data-section="calendar">Calendário</button></li>
+        <li><button class="menu-btn" data-section="tasks">Tarefas</button></li>
+        <li><button class="menu-btn" data-section="branding">Branding</button></li>
+        <li><button class="menu-btn" data-section="posts">Publicações</button></li>
+        <li><button class="menu-btn" data-section="articles">Artigos</button></li>
+        <li><button class="menu-btn" data-section="newsletters">Newsletters</button></li>
+        <li><button class="menu-btn" data-section="documents">Documentos Gerais</button></li>
+        <li><button class="menu-btn" data-section="meetings">Reuniões</button></li>
+        <li><button class="menu-btn" data-section="analytics">Analytics</button></li>
+      </ul>
+    </nav>
+    <button id="logout-btn" aria-label="Logout">Sair</button>
+  </aside>
+
+  <main>
+    <!-- ✅ HEADER COM SELECTOR DE CLIENTE -->
+    <header class="header-block">
+      <label for="client-select">Cliente atual:</label>
+      <select id="client-select">
+        <option value="">Selecione um cliente...</option>
+      </select>
+    </header>
+
+    <!-- content-area onde os cards aparecem -->
+    <section id="content-area" tabindex="0" aria-live="polite" aria-atomic="true"></section>
+  </main>
+
+  <!-- Scripts principais -->
+  <script type="module" src="admin.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+
+  <!-- 🔔 Toast -->
+  <div class="toast" id="toast"></div>
+
+  <!-- ✅ NOVO SCRIPT -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+    apiKey: "AIzaSyA-Em5uc8-h5P5YaJSzD9Ay1tgZkgOksGg",
+    authDomain: "website-task-masters.firebaseapp.com",
+    projectId: "website-task-masters",
+    storageBucket: "website-task-masters.firebasestorage.app",
+    messagingSenderId: "610510302558",
+    appId: "1:610510302558:web:9bdef4b19679f85601b3cf",
+    measurementId: "G-YBNTNNLLGX"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const clientSelect = document.getElementById("client-select");
+
+    // 🔄 Carrega lista de clientes
+    async function loadClients() {
+      try {
+        const clientRef = collection(db, "clientes");
+        const snapshot = await getDocs(clientRef);
+
+        snapshot.forEach(doc => {
+          const option = document.createElement("option");
+          option.value = doc.id;
+          option.textContent = doc.data().nome || "Sem nome";
+          clientSelect.appendChild(option);
+        });
+
+        // Define cliente selecionado anteriormente
+        const current = localStorage.getItem("clienteSelecionado");
+        if (current) {
+          clientSelect.value = current;
+        }
+
+      } catch (error) {
+        console.error("Erro ao carregar clientes:", error);
+      }
+    }
+
+    // 🧠 Listener de seleção
+    clientSelect.addEventListener("change", () => {
+      const clienteId = clientSelect.value;
+      if (clienteId) {
+        localStorage.setItem("clienteSelecionado", clienteId);
+        console.log("Cliente ativo:", clienteId);
+        // ⚠️ Aqui chamas a função para carregar dados filtrados
+        // ex: carregarTarefas(clienteId);
+      }
+    });
+
+    loadClients();
+  </script>
+</body>
+</html>
